@@ -57,10 +57,10 @@ public class GunController : MonoBehaviour
                 shotAudioSource.PlayOneShot(shotSound);
                 GameObject newBullet = Instantiate(bullet, spawnPoint.position, spawnPoint.rotation);
 
-                newBullet.GetComponent<Rigidbody>().AddForce(spawnPoint.forward * shotForce * Time.deltaTime, ForceMode.Impulse);
-                shotRateTime = Time.time + shotRate;
-
+                newBullet.GetComponent<Rigidbody>().AddForce( transform.forward * shotForce);
                 Destroy(newBullet, 3);
+
+                shotRateTime = Time.time + shotRate;
             }
         }
     }
