@@ -576,7 +576,7 @@ GameObject:
   - component: {fileID: 7609376113883301287}
   m_Layer: 0
   m_Name: AxeGhost
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -666,10 +666,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.20892525
-  m_Height: 0.8135414
+  m_Radius: 0.29056454
+  m_Height: 0.8245735
   m_Direction: 1
-  m_Center: {x: -0.0075883865, y: 0.3477707, z: 0.016210556}
+  m_Center: {x: -0.0017232299, y: 0.34225464, z: -0.0049390793}
 --- !u!114 &7609376113883301287
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -688,6 +688,7 @@ MonoBehaviour:
   rangoX: 1
   rangoY: 0.2
   rangoZ: 1
+  efectoExplosion: {fileID: 6823302871133167919, guid: 3138a83bedbd6ad4481ba0b061da2eb6, type: 3}
 --- !u!1 &7105012930179634478
 GameObject:
   m_ObjectHideFlags: 0

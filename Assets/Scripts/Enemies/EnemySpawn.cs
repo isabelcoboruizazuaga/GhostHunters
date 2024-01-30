@@ -1,12 +1,13 @@
 using UnityEngine;
 
-public class EnemySpawm : MonoBehaviour
+public class EnemySpawn : MonoBehaviour
 {
 
     public Transform spawnPosition;
     Vector3 randomLocation;
     public GameObject enemy;
 
+    private float colliderRadius=0.291f;
     void Start()
     {
         //We will spawn 5 random ghost at the beginning of the game
@@ -17,12 +18,7 @@ public class EnemySpawm : MonoBehaviour
         
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-    private void SpawnRandomGhost()
+    internal void SpawnRandomGhost()
     {
         //ObjectPosition
         randomLocation = Random.insideUnitSphere * 83; //scenery size
@@ -30,7 +26,7 @@ public class EnemySpawm : MonoBehaviour
 
         //Checking position colliders, spawn only happens when no collisions
         Collider[] hitColliders = new Collider[2]; //Max number of colliders it will check
-        int numColliders = Physics.OverlapSphereNonAlloc(spawnPosition.position + randomLocation, 0.21f, hitColliders);
+        int numColliders = Physics.OverlapSphereNonAlloc(spawnPosition.position + randomLocation, colliderRadius, hitColliders);
         if (numColliders == 0)
         {
             Instantiate(enemy, spawnPosition.position + randomLocation, enemy.transform.rotation);

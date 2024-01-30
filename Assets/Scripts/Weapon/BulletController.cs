@@ -10,9 +10,8 @@ public class BulletController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            Instantiate(efectoExplosion, transform.position, transform.rotation);
+            collision.gameObject.GetComponent<EnemyController>().Explode();
 
-            Destroy(collision.gameObject);
             Destroy(this, 1);
         }
     }

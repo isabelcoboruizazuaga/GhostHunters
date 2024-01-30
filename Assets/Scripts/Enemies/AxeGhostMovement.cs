@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
+using UnityEngine.XR;
 using static UnityEngine.GraphicsBuffer;
 
-public class EnemyRandomMovement : MonoBehaviour
+public class EnemyRandomMovement : EnemyController
 {
     public float velocity = 2f;
     public float rotationChangeTime = 1.5f;
