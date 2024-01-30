@@ -6,7 +6,7 @@ using UnityEngine.UIElements;
 using UnityEngine.XR;
 using static UnityEngine.GraphicsBuffer;
 
-public class EnemyRandomMovement : EnemyController
+public class AxeGhostMovement : EnemyController
 {
     public float velocity = 2f;
     public float rotationChangeTime = 1.5f;
@@ -16,19 +16,20 @@ public class EnemyRandomMovement : EnemyController
     public float rangoY=0.5f;
     public float rangoZ=1f;
 
-    private float latestDirectionChangeTime;
-    private float latestRotationChangeTime;
-    private Vector3 movementDirection;
-    private Vector3 movementPerSecond;
+    protected float latestDirectionChangeTime;
+    protected float latestRotationChangeTime;
+    protected Vector3 movementDirection;
+    protected Vector3 movementPerSecond;
 
 
-    void Start()
+    protected void Start()
     {
+        base.Start();
         latestDirectionChangeTime = 0f;
         CalcuateNewMovementVector();
     }
 
-    void CalcuateNewMovementVector()
+    protected void CalcuateNewMovementVector()
     {
         //creating a random direction vector, the ghost shouldn't be higher than 25f
         float y = (transform.position.y >= 25f) ? Random.Range(-rangoY, -0.1f) : Random.Range(-rangoY, rangoY);
@@ -36,7 +37,7 @@ public class EnemyRandomMovement : EnemyController
         movementPerSecond = movementDirection * velocity;
     }
 
-    void Update()
+    protected virtual void Update()
     {
         //when time is reached the directionChanges
         if (Time.time - latestDirectionChangeTime > directionChangeTime)
@@ -54,7 +55,7 @@ public class EnemyRandomMovement : EnemyController
         transform.Translate(movementPerSecond * Time.deltaTime);
     }
 
-    private void OnCollisionEnter(Collision collision)
+    protected virtual void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Building")
         {
