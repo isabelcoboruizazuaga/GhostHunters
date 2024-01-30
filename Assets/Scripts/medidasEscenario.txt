@@ -1,0 +1,10 @@
+Rango máximo
+x  -120  138        --> 9
+				130 radio
+z  -161  166        --> 0
+
+
+Rango pueblo
+x  -76  102         --> 13            178/2-> 89 radio
+								83 radio
+z  -70   95         --> 12.5          165/2-> 82.5 radio

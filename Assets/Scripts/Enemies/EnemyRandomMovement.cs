@@ -29,10 +29,10 @@ public class EnemyRandomMovement : MonoBehaviour
 
     void CalcuateNewMovementVector()
     {
-        //create a random direction vector with the magnitude of 1, later multiply it with the velocity of the enemy
-        movementDirection = new Vector3(Random.Range(-rangoX, rangoX), Random.Range(-rangoY, rangoY), Random.Range(-rangoZ, rangoZ));//.normalized;
+        //creating a random direction vector, the ghost shouldn't be higher than 25f
+        float y = (transform.position.y >= 25f) ? Random.Range(-rangoY, -0.1f) : Random.Range(-rangoY, rangoY);
+        movementDirection = new Vector3(Random.Range(-rangoX, rangoX), y, Random.Range(-rangoZ, rangoZ));
         movementPerSecond = movementDirection * velocity;
-
     }
 
     void Update()
@@ -51,7 +51,16 @@ public class EnemyRandomMovement : MonoBehaviour
 
         //move enemy:
         transform.Translate(movementPerSecond * Time.deltaTime);
+    }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Building")
+        {
+            latestDirectionChangeTime = Time.time;
+            movementDirection = new Vector3(-movementDirection.x, movementDirection.y, -movementDirection.z);
+            movementPerSecond = movementDirection * velocity;
+        }
     }
 
     private void LookAtRandom()
