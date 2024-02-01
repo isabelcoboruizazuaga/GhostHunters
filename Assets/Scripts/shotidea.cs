@@ -1,7 +1,8 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-public class WitchController : AxeGhostMovement
+public class shotidea : AxeGhostMovement
 {
 
     public GameObject magicBall;
@@ -9,9 +10,7 @@ public class WitchController : AxeGhostMovement
     public Transform ballSpawn;
     public float shotRate = 3f; //Time untill next shot
     private float shotRateTime = 0;
-    public float shotForce = 1500;
-
-    private GameObject newBall;
+    public float shotForce = 300;
 
     protected override void Update()
     {
@@ -24,8 +23,6 @@ public class WitchController : AxeGhostMovement
 
             if (Time.time > shotRateTime)
             {
-
-                shotRateTime = Time.time + shotRate;
                 StartCoroutine(ShotPlayer());
             }
         }
@@ -37,22 +34,17 @@ public class WitchController : AxeGhostMovement
         /**
         *TO DO
         *Make ghost stop moving while shooting
-        *Delete Ball when enemy dies
         **/
-        newBall = Instantiate(magicBall, ballSpawn.position, ballSpawn.rotation);
+        GameObject newBullet = Instantiate(magicBall, ballSpawn.position, ballSpawn.rotation);
 
         //Waiting for creation animation
-        yield return new WaitForSeconds(1f);
-
-        newBall.GetComponent<Rigidbody>().useGravity = true;
+        yield return new WaitForSeconds(0.45f);
 
         //shooting the ball
-        newBall.GetComponent<Rigidbody>().AddForce(transform.forward * shotForce);
-        Destroy(newBall, 3);
-    }
+        newBullet.GetComponent<Rigidbody>().AddForce(transform.forward * shotForce);
+        Destroy(newBullet, 3);
 
-    internal override void DestroyElements()
-    {
-        Destroy(newBall);
+        shotRateTime = Time.time + shotRate;
+        Debug.Log("Piu piu");
     }
 }

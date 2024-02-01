@@ -12,7 +12,7 @@ public class EnemyController : MonoBehaviour
 
     public GameObject efectoExplosion;
     // Start is called before the first frame update
-    protected void Start()
+    protected virtual void Start()
     {
         playerPosition = GameObject.Find("Player").transform;
     }
@@ -27,11 +27,17 @@ public class EnemyController : MonoBehaviour
     {
         var explotion = Instantiate(efectoExplosion, transform.position, transform.rotation);
 
+        DestroyElements();
         Destroy(explotion, 1);
         Destroy(gameObject);
 
         //Create a new ghost
         GameObject.Find("EnemySpawn").GetComponent<EnemySpawn>().SpawnRandomGhost();
+    }
+
+    internal virtual void DestroyElements()
+    {
+        //does nothing as base enemy doesn't shoot
     }
 
     protected bool CanSeePlayer()

@@ -22,7 +22,7 @@ public class AxeGhostMovement : EnemyController
     protected Vector3 movementPerSecond;
 
 
-    protected void Start()
+    protected override void Start()
     {
         base.Start();
         latestDirectionChangeTime = 0f;
