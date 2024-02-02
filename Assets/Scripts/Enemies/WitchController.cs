@@ -7,7 +7,7 @@ public class WitchController : AxeGhostMovement
     public GameObject magicBall;
 
     public Transform ballSpawn;
-    public float shotRate = 3f; //Time untill next shot
+    public float shotRate = 1f; //Time untill next shot
     private float shotRateTime = 0;
     public float shotForce = 1500;
 
@@ -24,21 +24,19 @@ public class WitchController : AxeGhostMovement
 
             if (Time.time > shotRateTime)
             {
-
                 shotRateTime = Time.time + shotRate;
                 StartCoroutine(ShotPlayer());
             }
+        }
+        else
+        {
+            velocity = 3;
         }
     }
 
 
     private IEnumerator ShotPlayer()
     {
-        /**
-        *TO DO
-        *Make ghost stop moving while shooting
-        *Delete Ball when enemy dies
-        **/
         newBall = Instantiate(magicBall, ballSpawn.position, ballSpawn.rotation);
 
         //Waiting for creation animation
@@ -54,5 +52,10 @@ public class WitchController : AxeGhostMovement
     internal override void DestroyElements()
     {
         Destroy(newBall);
+    }
+
+    internal override int TypeOfGhost()
+    {
+        return 2;
     }
 }

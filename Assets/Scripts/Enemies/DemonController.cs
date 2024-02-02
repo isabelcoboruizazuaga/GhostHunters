@@ -39,5 +39,11 @@ public class DemonController : AxeGhostMovement
             }
         }
     }
-   
+
+
+    internal override int TypeOfGhost()
+    {
+        return 2;
+    }
+
 }

@@ -32,7 +32,13 @@ public class EnemyController : MonoBehaviour
         Destroy(gameObject);
 
         //Create a new ghost
-        GameObject.Find("EnemySpawn").GetComponent<EnemySpawn>().SpawnRandomGhost();
+        GameObject.Find("EnemySpawn").GetComponent<EnemySpawn>().CallSpawn(TypeOfGhost());
+    }
+
+
+    internal virtual int TypeOfGhost()
+    {
+        return -1;
     }
 
     internal virtual void DestroyElements()

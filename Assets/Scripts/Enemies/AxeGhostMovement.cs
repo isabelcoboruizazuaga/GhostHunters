@@ -69,4 +69,9 @@ public class AxeGhostMovement : EnemyController
     {
         transform.Rotate(0, Random.Range(-180,180), 0);
     }
+
+    internal override int TypeOfGhost()
+    {
+        return 0;
+    }
 }
