@@ -54,7 +54,7 @@ public class GunController : MonoBehaviour
                 /*GameManager.instance.gunAmmo--;
                 textAmmo.text =GameManager.instance.gunAmmo.ToString();*/
 
-                shotAudioSource.PlayOneShot(shotSound);
+               // shotAudioSource.PlayOneShot(shotSound);
                 GameObject newBullet = Instantiate(bullet, spawnPoint.position, spawnPoint.rotation);
 
                 newBullet.GetComponent<Rigidbody>().AddForce( transform.forward * shotForce);
