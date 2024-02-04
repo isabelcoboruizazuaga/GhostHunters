@@ -572,8 +572,8 @@ GameObject:
   - component: {fileID: 8478449979400745222}
   - component: {fileID: 2367201639963084580}
   - component: {fileID: 4909560139857304108}
-  - component: {fileID: 342433223130412904}
   - component: {fileID: 7609376113883301287}
+  - component: {fileID: 1214299963323713171}
   m_Layer: 0
   m_Name: AxeGhost
   m_TagString: Enemy
@@ -647,8 +647,29 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
---- !u!136 &342433223130412904
-CapsuleCollider:
+--- !u!114 &7609376113883301287
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6206616456657580788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eed32e3773e08d44686b9d01d8813bf9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerPosition: {fileID: 0}
+  maxDistance: 15
+  efectoExplosion: {fileID: 6823302871133167919, guid: 3138a83bedbd6ad4481ba0b061da2eb6, type: 3}
+  velocity: 2
+  rotationChangeTime: 1.5
+  directionChangeTime: 3
+  rangoX: 1
+  rangoY: 0.2
+  rangoZ: 1
+--- !u!65 &1214299963323713171
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -665,30 +686,9 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.29056454
-  m_Height: 0.8245735
-  m_Direction: 1
-  m_Center: {x: -0.0017232299, y: 0.34225464, z: -0.0049390793}
---- !u!114 &7609376113883301287
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6206616456657580788}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eed32e3773e08d44686b9d01d8813bf9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  velocity: 2
-  rotationChangeTime: 1.5
-  directionChangeTime: 3
-  rangoX: 1
-  rangoY: 0.2
-  rangoZ: 1
-  efectoExplosion: {fileID: 6823302871133167919, guid: 3138a83bedbd6ad4481ba0b061da2eb6, type: 3}
+  serializedVersion: 3
+  m_Size: {x: 0.48029137, y: 0.83527756, z: 0.5173422}
+  m_Center: {x: 0.020415306, y: 0.38294983, z: 0.0039995313}
 --- !u!1 &7105012930179634478
 GameObject:
   m_ObjectHideFlags: 0

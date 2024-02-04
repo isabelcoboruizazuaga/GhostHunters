@@ -512,8 +512,8 @@ GameObject:
   - component: {fileID: 2952137980371402995}
   - component: {fileID: 4436567701752400758}
   - component: {fileID: 8408968138846166021}
-  - component: {fileID: 645368206717715301}
   - component: {fileID: 1680255173996114230}
+  - component: {fileID: 843772803220498197}
   m_Layer: 0
   m_Name: DemonGhost
   m_TagString: Enemy
@@ -587,29 +587,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
---- !u!136 &645368206717715301
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6417480817840923343}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.29056454
-  m_Height: 0.8245735
-  m_Direction: 1
-  m_Center: {x: -0.0017232299, y: 0.34225464, z: -0.0049390793}
 --- !u!114 &1680255173996114230
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -631,6 +608,27 @@ MonoBehaviour:
   rangoX: 1
   rangoY: 0.5
   rangoZ: 1
+--- !u!65 &843772803220498197
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6417480817840923343}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.48029137, y: 0.86101913, z: 0.5173422}
+  m_Center: {x: 0.020415306, y: 0.39582062, z: 0.0039995313}
 --- !u!1 &7233353521708464219
 GameObject:
   m_ObjectHideFlags: 0

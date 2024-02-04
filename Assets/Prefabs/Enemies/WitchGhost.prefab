@@ -409,7 +409,6 @@ GameObject:
   - component: {fileID: 9045691760412497862}
   - component: {fileID: 3626994044689129524}
   - component: {fileID: 998892837524356374}
-  - component: {fileID: 5697514336015393689}
   - component: {fileID: 860444384080645713}
   m_Layer: 0
   m_Name: WitchGhost
@@ -505,29 +504,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.48029137, y: 0.9266472, z: 0.5173422}
   m_Center: {x: 0.020415306, y: 0.42863464, z: 0.0039995313}
---- !u!136 &5697514336015393689
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9116505598960798271}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 1
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Radius: 0.29056454
-  m_Height: 0.96035385
-  m_Direction: 1
-  m_Center: {x: -0.0017232299, y: 0.4101448, z: -0.0049390793}
 --- !u!114 &860444384080645713
 MonoBehaviour:
   m_ObjectHideFlags: 0
