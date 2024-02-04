@@ -1,0 +1,12 @@
+# Blender 4.0.2 MTL File: '25ad7fc3a09f4a958dd62b5b522257ee.blend'
+# www.blender.org
+
+newmtl ChumboScyFi
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
