@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class PlayerInteraction : MonoBehaviour
@@ -5,6 +6,8 @@ public class PlayerInteraction : MonoBehaviour
     //Vida
     public float life;
     private LifeBar lifeSlider;
+
+    public bool vulnerable = true;
 
 
     // Start is called before the first frame update
@@ -26,7 +29,7 @@ public class PlayerInteraction : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Enemy"))
+        if (other.CompareTag("Enemy") &&vulnerable)
         {
             //PROVISIONAL CODE, TODO: QUIT LIFE BASED ON ENEMY
             GetHurt(10);
@@ -35,13 +38,23 @@ public class PlayerInteraction : MonoBehaviour
 
     public void GetHurt(long lifeLost)
     {
-        //Debug.Log("vida: " + life + "vida perdida: " + lifeLost + "restante= " + (life-lifeLost));
+        vulnerable = false;
+
         life -= lifeLost;
         lifeSlider.SetSliderPosition(life);
+
+        StartCoroutine(VulnerableCorutine());
     }
 
     public void GetHealed(long lifeHealed)
     {
         lifeSlider.Heal(lifeHealed);
+    }
+
+
+    IEnumerator VulnerableCorutine()
+    {
+        yield return new WaitForSeconds(2);
+        vulnerable = true;
     }
 }

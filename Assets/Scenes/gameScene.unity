@@ -14749,6 +14749,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   life: 0
+  vulnerable: 1
 --- !u!1 &1194559585
 GameObject:
   m_ObjectHideFlags: 0
@@ -27377,7 +27378,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1680255173996114230, guid: 3a506d3318377c348ae1663c7a36b1e7, type: 3}
       propertyPath: velocity
-      value: 0
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1680255173996114230, guid: 3a506d3318377c348ae1663c7a36b1e7, type: 3}
       propertyPath: playerPosition
@@ -27429,7 +27430,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6417480817840923343, guid: 3a506d3318377c348ae1663c7a36b1e7, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8408968138846166021, guid: 3a506d3318377c348ae1663c7a36b1e7, type: 3}
       propertyPath: m_Constraints
