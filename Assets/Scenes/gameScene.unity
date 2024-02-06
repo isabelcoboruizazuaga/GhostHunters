@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44402242, g: 0.49316543, b: 0.5722324, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3090,7 +3090,7 @@ GameObject:
   - component: {fileID: 237453329}
   - component: {fileID: 237453328}
   m_Layer: 5
-  m_Name: PlayerUI
+  m_Name: PlayerHUD
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6920,7 +6920,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70c6eda76eaf34c4b8baea77092f4298, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mouseSensitivity: 200
+  mouseSensitivity: 500
   playerBody: {fileID: 1194311233}
 --- !u!1001 &544098852
 PrefabInstance:
@@ -14607,6 +14607,7 @@ GameObject:
   - component: {fileID: 1194311233}
   - component: {fileID: 1194311235}
   - component: {fileID: 1194311234}
+  - component: {fileID: 1194311238}
   - component: {fileID: 1194311236}
   - component: {fileID: 1194311237}
   m_Layer: 0
@@ -14727,7 +14728,7 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -14735,6 +14736,19 @@ CapsuleCollider:
   m_Height: 2.0147686
   m_Direction: 1
   m_Center: {x: 0, y: 0.0000009536743, z: 0}
+--- !u!114 &1194311238
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1194311232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f5f3075acb41a14a9788685842e8dd0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  life: 0
 --- !u!1 &1194559585
 GameObject:
   m_ObjectHideFlags: 0
@@ -16513,7 +16527,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.76522756, g: 0.9716981, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -16588,7 +16602,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -19856,7 +19870,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 1, b: 0.004989147, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -19958,7 +19972,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1598877885
 Transform:
   m_ObjectHideFlags: 0
@@ -23130,8 +23144,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1817222036}
   - component: {fileID: 1817222037}
+  - component: {fileID: 1817222038}
   m_Layer: 5
-  m_Name: Slider
+  m_Name: LifeSlider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -23210,6 +23225,21 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1817222038
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1817222035}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c532deef367f9744bd87dfd76987551, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lifeSlider: {fileID: 1817222037}
+  maxLife: 100
+  player: {fileID: 1194311232}
 --- !u!1 &1818190903
 GameObject:
   m_ObjectHideFlags: 0
@@ -27346,6 +27376,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 472701152}
     m_Modifications:
     - target: {fileID: 1680255173996114230, guid: 3a506d3318377c348ae1663c7a36b1e7, type: 3}
+      propertyPath: velocity
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1680255173996114230, guid: 3a506d3318377c348ae1663c7a36b1e7, type: 3}
       propertyPath: playerPosition
       value: 
       objectReference: {fileID: 0}
@@ -27395,7 +27429,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6417480817840923343, guid: 3a506d3318377c348ae1663c7a36b1e7, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8408968138846166021, guid: 3a506d3318377c348ae1663c7a36b1e7, type: 3}
+      propertyPath: m_Constraints
+      value: 126
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

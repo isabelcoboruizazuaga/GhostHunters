@@ -28,6 +28,7 @@ public class PlayerMovement : MonoBehaviour
     //private StaminaBar staminaSlider;
     public float staminaAmount = 5;
 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -67,6 +68,7 @@ public class PlayerMovement : MonoBehaviour
 
         //RunCheck();
     }
+
 
    /* private void RunCheck()
     {
