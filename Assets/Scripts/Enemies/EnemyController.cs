@@ -6,7 +6,9 @@ using UnityEngine.XR;
 public class EnemyController : MonoBehaviour
 {
     public Transform playerPosition;
+    protected GameObject player;
     public float maxDistance = 15f;
+    public int coins = 1;
 
     protected bool playerSeen = false;
 
@@ -14,7 +16,8 @@ public class EnemyController : MonoBehaviour
     // Start is called before the first frame update
     protected virtual void Start()
     {
-        playerPosition = GameObject.Find("Player").transform;
+        player = GameObject.Find("Player");
+        playerPosition =player.transform;
     }
 
     // Update is called once per frame
@@ -25,6 +28,7 @@ public class EnemyController : MonoBehaviour
 
     internal void Explode()
     {
+        player.GetComponent<PlayerMovement>().money += coins;
         var explotion = Instantiate(efectoExplosion, transform.position, transform.rotation);
 
         DestroyElements();
