@@ -31,8 +31,9 @@ public class AxeGhostMovement : EnemyController
 
     protected void CalcuateNewMovementVector()
     {
-        //creating a random direction vector, the ghost shouldn't be higher than 25f
+        //creating a random direction vector, the ghost shouldn't be higher than 25f nor lower than 22
         float y = (transform.position.y >= 25f) ? Random.Range(-rangoY, -0.1f) : Random.Range(-rangoY, rangoY);
+        //y = (transform.position.y <= 22.2f) ? Random.Range(0.2f, 1) : Random.Range(-rangoY, rangoY);
         movementDirection = new Vector3(Random.Range(-rangoX, rangoX), y, Random.Range(-rangoZ, rangoZ));
         movementPerSecond = movementDirection * velocity;
     }
@@ -57,7 +58,7 @@ public class AxeGhostMovement : EnemyController
 
     protected virtual void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Building")
+        if (collision.gameObject.tag != "Player" && collision.gameObject.tag != "PlayerBullet")
         {
             latestDirectionChangeTime = Time.time;
             movementDirection = new Vector3(-movementDirection.x, movementDirection.y, -movementDirection.z);

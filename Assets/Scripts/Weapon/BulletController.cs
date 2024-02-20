@@ -6,11 +6,13 @@ public class BulletController : MonoBehaviour
 {
 
     public GameObject efectoExplosion;
-    private void OnCollisionEnter(Collision collision)
+
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.gameObject.CompareTag("Enemy"))
+        Debug.Log(other.tag + " " + other.name);
+        if (other.CompareTag("Enemy"))
         {
-            collision.gameObject.GetComponent<EnemyController>().Explode();
+            other.GetComponent<EnemyController>().Explode();
 
             Destroy(this, 1);
         }

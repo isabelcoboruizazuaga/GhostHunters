@@ -28,7 +28,7 @@ public class EnemyController : MonoBehaviour
 
     internal void Explode()
     {
-        player.GetComponent<PlayerMovement>().money += coins;
+        player.GetComponent<PlayerMovement>().addCoins(coins);
         var explotion = Instantiate(efectoExplosion, transform.position, transform.rotation);
 
         DestroyElements();

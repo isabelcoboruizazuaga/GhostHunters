@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -30,11 +31,13 @@ public class PlayerMovement : MonoBehaviour
 
     //Dinero
     public int money = 0;
+    public TextMeshProUGUI coinText;
 
     // Start is called before the first frame update
     void Start()
     {
         //staminaSlider = FindObjectOfType<StaminaBar>();
+        addCoins(0);
     }
 
     // Update is called once per frame
@@ -69,6 +72,12 @@ public class PlayerMovement : MonoBehaviour
         }
 
         //RunCheck();
+    }
+
+    public void addCoins( int coinsToAdd)
+    {
+        money += coinsToAdd;
+        coinText.text = money.ToString();
     }
 
    /* private void RunCheck()

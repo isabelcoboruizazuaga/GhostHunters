@@ -7,7 +7,7 @@ public class EnemySpawn : MonoBehaviour
     Vector3 randomLocation;
     public GameObject axeGhost, witchGhost, demonGhost, axeBoss, witchBoss, demonBoss;
 
-    private float colliderRadius = 0.291f;
+    private float colliderRadius = 1f;
     void Start()
     {
         //We will spawn 10 random ghost at the beginning of the game
