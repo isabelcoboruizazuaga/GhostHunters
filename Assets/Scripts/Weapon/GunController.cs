@@ -16,6 +16,8 @@ public class GunController : MonoBehaviour
     public TextMeshProUGUI textAmmo;
     public TextMeshProUGUI textGrenades;
 
+    public bool automatic = false;
+
     private void Awake()
     {
         shotAudioSource = GetComponent<AudioSource>();
@@ -30,37 +32,59 @@ public class GunController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       /* if (GameManager.instance.muerto)
+        /* if (GameManager.instance.muerto)
+         {
+             return;
+         }*/
+        if (!automatic)
         {
-            return;
-        }*/
 
-        if (Input.GetButtonDown("Fire1"))
-        {
-           /* if (GameManager.instance.tipoDeArma == 1 && GameManager.instance.gunAmmo < 1)
+
+            if (Input.GetButtonDown("Fire1"))
             {
-                return;
+                /* if (GameManager.instance.tipoDeArma == 1 && GameManager.instance.gunAmmo < 1)
+                 {
+                     return;
+                 }
+                 if (GameManager.instance.tipoDeArma == 2 && GameManager.instance.grenades < 1)
+                 {
+                     return;
+                 }*/
+
+                if (Time.time > shotRateTime)
+                {
+                    //CambiarCanvas();
+
+                    //Esto creo que no es necesario, comprobar luego
+                    /*GameManager.instance.gunAmmo--;
+                    textAmmo.text =GameManager.instance.gunAmmo.ToString();*/
+
+                    // shotAudioSource.PlayOneShot(shotSound);
+
+                    GameObject newBullet = Instantiate(bullet, spawnPoint.position, spawnPoint.rotation);
+
+                    newBullet.GetComponent<Rigidbody>().AddForce(transform.forward * shotForce);
+                    Destroy(newBullet, 3);
+
+                    shotRateTime = Time.time + shotRate;
+                }
+
             }
-            if (GameManager.instance.tipoDeArma == 2 && GameManager.instance.grenades < 1)
+
+        }
+        else
+        {
+            if (Input.GetButton("Fire1"))
             {
-                return;
-            }*/
+                if (Time.time > shotRateTime)
+                {
+                    GameObject newBullet = Instantiate(bullet, spawnPoint.position, spawnPoint.rotation);
 
-            if (Time.time > shotRateTime)
-            {
-                //CambiarCanvas();
+                    newBullet.GetComponent<Rigidbody>().AddForce(transform.forward * shotForce);
+                    Destroy(newBullet, 3);
 
-                //Esto creo que no es necesario, comprobar luego
-                /*GameManager.instance.gunAmmo--;
-                textAmmo.text =GameManager.instance.gunAmmo.ToString();*/
-
-               // shotAudioSource.PlayOneShot(shotSound);
-                GameObject newBullet = Instantiate(bullet, spawnPoint.position, spawnPoint.rotation);
-
-                newBullet.GetComponent<Rigidbody>().AddForce( transform.forward * shotForce);
-                Destroy(newBullet, 3);
-
-                shotRateTime = Time.time + shotRate;
+                    shotRateTime = Time.time + shotRate;
+                }
             }
         }
     }

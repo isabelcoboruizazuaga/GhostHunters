@@ -9,7 +9,6 @@ public class BulletController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log(other.tag + " " + other.name);
         if (other.CompareTag("Enemy"))
         {
             other.GetComponent<EnemyController>().Explode();
