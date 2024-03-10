@@ -1890,6 +1890,8 @@ GameObject:
   - component: {fileID: 148406608}
   - component: {fileID: 148406610}
   - component: {fileID: 148406609}
+  - component: {fileID: 148406612}
+  - component: {fileID: 148406613}
   m_Layer: 5
   m_Name: ImprovedGun
   m_TagString: Untagged
@@ -1955,6 +1957,47 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 148406607}
   m_CullTransparentMesh: 1
+--- !u!114 &148406612
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 148406607}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 267e07c1d22c3cc41b0713de32fa9157, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &148406613
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 148406607}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 148406612}
+          m_TargetAssemblyTypeName: BuyableItemController, Assembly-CSharp
+          m_MethodName: ObjectClicked
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1001 &156644616
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3428,7 +3471,7 @@ GameObject:
   m_Component:
   - component: {fileID: 262492474}
   m_Layer: 5
-  m_Name: Images
+  m_Name: BuyItemsImages
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7191,6 +7234,7 @@ GameObject:
   - component: {fileID: 550698979}
   - component: {fileID: 550698978}
   - component: {fileID: 550698977}
+  - component: {fileID: 550698981}
   m_Layer: 5
   m_Name: WeaponShopUI
   m_TagString: Untagged
@@ -7245,7 +7289,7 @@ Canvas:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 550698976}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 1
   m_Camera: {fileID: 522811754}
@@ -7281,6 +7325,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &550698981
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 550698976}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 267e07c1d22c3cc41b0713de32fa9157, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &552265441
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8546,8 +8602,10 @@ GameObject:
   - component: {fileID: 641223545}
   - component: {fileID: 641223547}
   - component: {fileID: 641223546}
+  - component: {fileID: 641223549}
+  - component: {fileID: 641223550}
   m_Layer: 5
-  m_Name: Image (4)
+  m_Name: Bullet1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8610,6 +8668,47 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 641223544}
   m_CullTransparentMesh: 1
+--- !u!114 &641223549
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 641223544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 267e07c1d22c3cc41b0713de32fa9157, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &641223550
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 641223544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 641223549}
+          m_TargetAssemblyTypeName: BuyableItemController, Assembly-CSharp
+          m_MethodName: ObjectClicked
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1001 &645568371
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8964,8 +9063,10 @@ GameObject:
   - component: {fileID: 668260657}
   - component: {fileID: 668260659}
   - component: {fileID: 668260658}
+  - component: {fileID: 668260661}
+  - component: {fileID: 668260660}
   m_Layer: 5
-  m_Name: Image (7)
+  m_Name: HealthItem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9028,6 +9129,47 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 668260656}
   m_CullTransparentMesh: 1
+--- !u!114 &668260660
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 668260656}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 267e07c1d22c3cc41b0713de32fa9157, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &668260661
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 668260656}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 668260660}
+          m_TargetAssemblyTypeName: BuyableItemController, Assembly-CSharp
+          m_MethodName: ObjectClicked
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1001 &674548832
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12416,8 +12558,10 @@ GameObject:
   - component: {fileID: 975522994}
   - component: {fileID: 975522996}
   - component: {fileID: 975522995}
+  - component: {fileID: 975522998}
+  - component: {fileID: 975522999}
   m_Layer: 5
-  m_Name: Image (5)
+  m_Name: Bullet2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12480,6 +12624,47 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 975522993}
   m_CullTransparentMesh: 1
+--- !u!114 &975522998
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 975522993}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 267e07c1d22c3cc41b0713de32fa9157, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &975522999
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 975522993}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 975522998}
+          m_TargetAssemblyTypeName: BuyableItemController, Assembly-CSharp
+          m_MethodName: ObjectClicked
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1001 &981254141
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15030,8 +15215,10 @@ GameObject:
   - component: {fileID: 1194559586}
   - component: {fileID: 1194559588}
   - component: {fileID: 1194559587}
+  - component: {fileID: 1194559590}
+  - component: {fileID: 1194559589}
   m_Layer: 5
-  m_Name: Image (6)
+  m_Name: Bullet3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15094,6 +15281,47 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1194559585}
   m_CullTransparentMesh: 1
+--- !u!114 &1194559589
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1194559585}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1194559590}
+          m_TargetAssemblyTypeName: BuyableItemController, Assembly-CSharp
+          m_MethodName: ObjectClicked
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!114 &1194559590
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1194559585}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 267e07c1d22c3cc41b0713de32fa9157, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1197475108
 GameObject:
   m_ObjectHideFlags: 0
@@ -20271,7 +20499,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1272311167088904715, guid: b0aa735010897cd47a1d42d76dcc8969, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1338638767478907369, guid: b0aa735010897cd47a1d42d76dcc8969, type: 3}
       propertyPath: m_LocalRotation.w
@@ -20938,7 +21166,7 @@ GameObject:
   - component: {fileID: 1620291348}
   - component: {fileID: 1620291347}
   m_Layer: 5
-  m_Name: Image
+  m_Name: ImageSelected
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -21333,7 +21561,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 35.0005, y: 24.714996}
+  m_AnchoredPosition: {x: 35.0005, y: 24.715027}
   m_SizeDelta: {x: 100.001, y: 50.190002}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!4 &1649362692 stripped
@@ -23647,6 +23875,8 @@ GameObject:
   - component: {fileID: 1818190904}
   - component: {fileID: 1818190906}
   - component: {fileID: 1818190905}
+  - component: {fileID: 1818190907}
+  - component: {fileID: 1818190908}
   m_Layer: 5
   m_Name: CannonGun
   m_TagString: Untagged
@@ -23712,6 +23942,47 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1818190903}
   m_CullTransparentMesh: 1
+--- !u!114 &1818190907
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1818190903}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 267e07c1d22c3cc41b0713de32fa9157, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1818190908
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1818190903}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1818190907}
+          m_TargetAssemblyTypeName: BuyableItemController, Assembly-CSharp
+          m_MethodName: ObjectClicked
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1001 &1822833051
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -26915,6 +27186,8 @@ GameObject:
   - component: {fileID: 2089811924}
   - component: {fileID: 2089811926}
   - component: {fileID: 2089811925}
+  - component: {fileID: 2089811927}
+  - component: {fileID: 2089811928}
   m_Layer: 5
   m_Name: SemiAutomatic
   m_TagString: Untagged
@@ -26980,6 +27253,47 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2089811923}
   m_CullTransparentMesh: 1
+--- !u!114 &2089811927
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2089811923}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 267e07c1d22c3cc41b0713de32fa9157, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2089811928
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2089811923}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2089811927}
+          m_TargetAssemblyTypeName: BuyableItemController, Assembly-CSharp
+          m_MethodName: ObjectClicked
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1001 &2090827532
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -27711,7 +28025,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7644214211337498548, guid: 60482a1b7758864429a212e5d4bf9811, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

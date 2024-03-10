@@ -8,7 +8,7 @@ public class TerminalController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        shopTerminal.GetComponent<Canvas>().enabled = false;        
     }
 
     // Update is called once per frame
@@ -66,7 +66,7 @@ public class TerminalController : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             playerInRange = true;
-            Debug.Log("im in");
         }
     }
+   
 }
