@@ -42,6 +42,8 @@ public class TerminalController : MonoBehaviour
         GameObject.FindWithTag("MainCamera").GetComponent<CameraLook>().enabled = false;
         GameObject.FindWithTag("Weapon").GetComponent<GunController>().enabled = false;
         GameObject.FindWithTag("Weapon").GetComponent<MeshRenderer>().enabled = false;
+
+        shopTerminal.GetComponent<TerminalUI>().Clear();
     }
 
 
