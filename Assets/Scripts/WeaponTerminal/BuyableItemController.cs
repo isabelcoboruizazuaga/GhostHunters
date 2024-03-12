@@ -10,6 +10,7 @@ public class BuyableItemController : MonoBehaviour
     //Component members
     private Image image;
     public int price = 200;
+    public int quantity = 1;
     public TextMeshProUGUI priceTxt;
 
     //Player Controller
