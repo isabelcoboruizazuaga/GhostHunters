@@ -1970,6 +1970,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   price: 20
+  quantity: 1
   priceTxt: {fileID: 0}
 --- !u!114 &148406613
 MonoBehaviour:
@@ -8684,6 +8685,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   price: 2
+  quantity: 10
   priceTxt: {fileID: 0}
 --- !u!114 &641223550
 MonoBehaviour:
@@ -9148,6 +9150,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   price: 10
+  quantity: 1
   priceTxt: {fileID: 0}
 --- !u!114 &668260661
 MonoBehaviour:
@@ -12780,6 +12783,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   price: 3
+  quantity: 10
   priceTxt: {fileID: 0}
 --- !u!114 &975522999
 MonoBehaviour:
@@ -15193,6 +15197,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 522811755}
     m_Modifications:
+    - target: {fileID: 1009322990762304232, guid: 0bddd1a12ad72364596e927212e579c8, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3786148705503247008, guid: 0bddd1a12ad72364596e927212e579c8, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
@@ -15255,7 +15263,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5011866238226930036, guid: 0bddd1a12ad72364596e927212e579c8, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5011866238226930036, guid: 0bddd1a12ad72364596e927212e579c8, type: 3}
       propertyPath: m_TagString
@@ -15343,6 +15351,7 @@ GameObject:
   - component: {fileID: 1194311235}
   - component: {fileID: 1194311234}
   - component: {fileID: 1194311238}
+  - component: {fileID: 1194311239}
   - component: {fileID: 1194311236}
   - component: {fileID: 1194311237}
   m_Layer: 0
@@ -15487,6 +15496,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   life: 0
   vulnerable: 1
+--- !u!114 &1194311239
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1194311232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb9d443df6f0eb341874edfa9d8faa15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weapons:
+  - {fileID: 1402669527}
+  - {fileID: 1367672809}
+  - {fileID: 31338655}
+  - {fileID: 491284896}
 --- !u!1 &1194559585
 GameObject:
   m_ObjectHideFlags: 0
@@ -15607,6 +15633,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   price: 5
+  quantity: 50
   priceTxt: {fileID: 0}
 --- !u!1 &1197475108
 GameObject:
@@ -17691,6 +17718,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 4607489187838822, guid: 00e2e59cbc04eab4a982218df54ce70b, type: 3}
   m_PrefabInstance: {fileID: 1359241910}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1367672809 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7644214211337498548, guid: 60482a1b7758864429a212e5d4bf9811, type: 3}
+  m_PrefabInstance: {fileID: 3921585872894503679}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1376519648
 GameObject:
@@ -24509,6 +24541,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   price: 50
+  quantity: 1
   priceTxt: {fileID: 0}
 --- !u!114 &1818190908
 MonoBehaviour:
@@ -27822,6 +27855,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   price: 100
+  quantity: 1
   priceTxt: {fileID: 0}
 --- !u!114 &2089811928
 MonoBehaviour:
@@ -28587,7 +28621,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7644214211337498548, guid: 60482a1b7758864429a212e5d4bf9811, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -66,7 +66,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: f936f0bc6683ea54a8e5a1a4eb5fdb8e, type: 3}
       propertyPath: m_Name
-      value: Gun2
+      value: PowerGun
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f936f0bc6683ea54a8e5a1a4eb5fdb8e, type: 3}
+      propertyPath: m_TagString
+      value: Weapon
       objectReference: {fileID: 0}
     - target: {fileID: 4718799004362310954, guid: f936f0bc6683ea54a8e5a1a4eb5fdb8e, type: 3}
       propertyPath: m_Materials.Array.data[0]
