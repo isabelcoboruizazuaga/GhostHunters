@@ -15,6 +15,7 @@ public class BuyableItemController : MonoBehaviour
 
     //Player Controller
     private PlayerMovement playerController;
+    private PlayerWeaponBar playerWeaponBar;
 
     // Start is called before the first frame update
     void Start()
@@ -22,6 +23,7 @@ public class BuyableItemController : MonoBehaviour
         terminalUI = GameObject.Find("WeaponShopUI").GetComponent<TerminalUI>();
         buyBtn = GameObject.Find("BuyButton").GetComponent<Button>();
         playerController = GameObject.Find("Player").GetComponent<PlayerMovement>();
+        playerWeaponBar = GameObject.Find("Player").GetComponent<PlayerWeaponBar>();
 
         //Setting of this component members
         priceTxt = GetComponentInChildren<TextMeshProUGUI>();
@@ -33,7 +35,7 @@ public class BuyableItemController : MonoBehaviour
     public void ObjectClicked()
     {
         //Clean other listeners
-        buyBtn.onClick.RemoveListener(Click);
+        buyBtn.onClick.RemoveListener(Buy);
 
         //Set the object to buy in the buying interface
         terminalUI.SetBuy(image,price);
@@ -43,19 +45,22 @@ public class BuyableItemController : MonoBehaviour
         {
             //Set active the buy button
             buyBtn.enabled = true;
-            buyBtn.onClick.AddListener(Click);
+            buyBtn.onClick.AddListener(Buy);
         }
     }
 
-    public void Click()
+    public void Buy()
     {
         //Substract player money
         playerController.money -= price;
         playerController.addCoins(0);
 
+        //Make weapon active in weapon bar
+        playerWeaponBar.BuyWeapon(price);
+
         //Clean buy section
         terminalUI.Clear();
-        buyBtn.onClick.RemoveListener(Click);
+        buyBtn.onClick.RemoveListener(Buy);
     }
 
 }

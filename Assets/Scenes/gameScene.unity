@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44402242, g: 0.49316543, b: 0.5722324, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3503,7 +3503,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.00061035156, y: -41.874985}
+  m_AnchoredPosition: {x: -0.00061035156, y: -41.875}
   m_SizeDelta: {x: 0, y: -83.54999}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &269828714
@@ -3718,7 +3718,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1587211277993745740, guid: f1f93983a4f8e344cae81ec76bd5ca7f, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2111406008126392310, guid: f1f93983a4f8e344cae81ec76bd5ca7f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -15508,11 +15508,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb9d443df6f0eb341874edfa9d8faa15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weapons:
-  - {fileID: 1402669527}
-  - {fileID: 1367672809}
-  - {fileID: 31338655}
-  - {fileID: 491284896}
+  activeWeapon: {fileID: 0}
 --- !u!1 &1194559585
 GameObject:
   m_ObjectHideFlags: 0
@@ -17718,11 +17714,6 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 4607489187838822, guid: 00e2e59cbc04eab4a982218df54ce70b, type: 3}
   m_PrefabInstance: {fileID: 1359241910}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1367672809 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7644214211337498548, guid: 60482a1b7758864429a212e5d4bf9811, type: 3}
-  m_PrefabInstance: {fileID: 3921585872894503679}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1376519648
 GameObject:
@@ -20951,7 +20942,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1272311167088904715, guid: b0aa735010897cd47a1d42d76dcc8969, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1338638767478907369, guid: b0aa735010897cd47a1d42d76dcc8969, type: 3}
       propertyPath: m_LocalRotation.w
@@ -28621,7 +28612,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7644214211337498548, guid: 60482a1b7758864429a212e5d4bf9811, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class TerminalController : MonoBehaviour
@@ -41,7 +42,14 @@ public class TerminalController : MonoBehaviour
         GameObject.FindWithTag("Player").GetComponent<PlayerMovement>().enabled = false;
         GameObject.FindWithTag("MainCamera").GetComponent<CameraLook>().enabled = false;
         GameObject.FindWithTag("Weapon").GetComponent<GunController>().enabled = false;
-        GameObject.FindWithTag("Weapon").GetComponent<MeshRenderer>().enabled = false;
+        try
+        {
+            GameObject.FindWithTag("Weapon").GetComponent<MeshRenderer>().enabled = false;
+        }
+        catch (Exception ex)
+        {
+            GameObject.FindWithTag("Weapon").GetComponentInChildren<MeshRenderer>().enabled = false;
+        }
 
         shopTerminal.GetComponent<TerminalUI>().Clear();
     }
@@ -59,8 +67,16 @@ public class TerminalController : MonoBehaviour
         //Unblock player and camera movement
         GameObject.FindWithTag("Player").GetComponent<PlayerMovement>().enabled = true;
         GameObject.FindWithTag("MainCamera").GetComponent<CameraLook>().enabled = true;
-        GameObject.FindWithTag("Weapon").GetComponent<GunController>().enabled = true;
-        GameObject.FindWithTag("Weapon").GetComponent<MeshRenderer>().enabled = true;
+        GameObject.FindWithTag("Weapon").GetComponent<GunController>().enabled = true; 
+        
+        try
+        {
+            GameObject.FindWithTag("Weapon").GetComponent<MeshRenderer>().enabled = true;
+        }
+        catch (Exception ex)
+        {
+            GameObject.FindWithTag("Weapon").GetComponentInChildren<MeshRenderer>().enabled = true;
+        }
     }
 
     private void OnTriggerEnter(Collider other)
