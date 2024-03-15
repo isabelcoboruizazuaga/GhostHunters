@@ -8,13 +8,14 @@ public class PlayerWeaponBar : MonoBehaviour
     //Weapons
     public List<object[]> weapons = new List<object[]>(); //{ {gun,purchased, ammunition}, {gun,purchased, ammunition}}
     public GameObject activeWeapon;
+    public object[] activeWeaponObjectComplete;
     public Dictionary<GameObject, (bool, int)[]> a = new Dictionary<GameObject, (bool, int)[]>();
-    public Image[] weaponImageInBar= new Image[4];
+    public Image[] weaponImageInBar = new Image[4];
 
     //Bullets
     public Image bulletImage;
     public TextMeshProUGUI bulletTxt;
-    public Sprite[] bulletsSource= new Sprite[4];
+    public Sprite[] bulletsSource = new Sprite[4];
 
     // Start is called before the first frame update
     void Start()
@@ -24,6 +25,7 @@ public class PlayerWeaponBar : MonoBehaviour
 
         //Set active weapon
         var weapon = weapons[0];
+        activeWeaponObjectComplete = weapon;
         activeWeapon = (GameObject)weapon[0];
         ShowWeaponBullets(0, weapon);
     }
@@ -64,28 +66,36 @@ public class PlayerWeaponBar : MonoBehaviour
             activeWeapon.SetActive(false);
 
             activeWeapon = (GameObject)weaponObject[0];
+            activeWeaponObjectComplete = weaponObject;
 
             activeWeapon.SetActive(true);
 
             //Mostrar las balas
-            ShowWeaponBullets(position,weaponObject);
+            ShowWeaponBullets(position, weaponObject);
         }
     }
 
     /*
      *Shows in the ui the selected weapon avaliable bullets
      */
-    public void ShowWeaponBullets(int position,object[] weaponObject)
+    public void ShowWeaponBullets(int position, object[] weaponObject)
     {
         bulletImage.GetComponent<Image>().sprite = bulletsSource[position];
-        if (position != 0) { 
-        bulletTxt.text = ((int)weaponObject[2]).ToString(); //WeaponObject-> {weapon, purchased, ammunition}
+        if (position != 0)
+        {
+            bulletTxt.text = ((int)weaponObject[2]).ToString(); //WeaponObject-> {weapon, purchased, ammunition}
         }
         else
         {
             bulletTxt.text = "\u221E";
         }
+    }
 
+    public void UpdateBullets(string bullets, object[] activeWeaponObject)
+    {
+        bulletTxt.text = bullets.ToString();
+        this.activeWeaponObjectComplete = activeWeaponObject;
+        UpdateWeapon(activeWeaponObject);
     }
 
     //Set the purchased weapon to bought in the bar
@@ -146,10 +156,30 @@ public class PlayerWeaponBar : MonoBehaviour
         weapons.Add(weaponObject);
     }
 
+    /*
+     * Updates a weapon based on the given index
+     */
     public void UpdateWeapon(int position, GameObject weapon, bool purchased, int amunition)
     {
         object[] weaponObject = { weapon, purchased, amunition };
         weapons[position] = weaponObject;
+    }
+
+    /*
+     *Updates a weapon in the list based on the weapon Game Object of the given object
+     */
+    public void UpdateWeapon(object[] weaponComplete)
+    {
+        for (int i = 0; i < weapons.Count; i++)
+        {
+            var item = weapons[i]; 
+            //Encuentra el objeto basándose en el arma
+            if (item[0] == weaponComplete[0])
+            {
+                //Lo sustituye por el objeto pasado
+                weapons[i] = weaponComplete;
+            }
+        }
     }
 
 }

@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -17,6 +18,8 @@ public class BuyableItemController : MonoBehaviour
     private PlayerMovement playerController;
     private PlayerWeaponBar playerWeaponBar;
 
+    private GameManager gameManager;
+    public Weapon weapon;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,6 +32,18 @@ public class BuyableItemController : MonoBehaviour
         priceTxt = GetComponentInChildren<TextMeshProUGUI>();
         priceTxt.text = price.ToString();
         image = this.GetComponent<Image>();
+
+
+        gameManager=GameObject.Find("GameManager").GetComponent<GameManager>();
+
+        //Sets this weapon object using the Sprite as an id
+        try
+        {
+            this.weapon= gameManager.weaponList.FindWeaponBySprite(image.sprite);
+        }catch(Exception e) {
+            Debug.LogError(e);
+
+        }
 
     }
 
