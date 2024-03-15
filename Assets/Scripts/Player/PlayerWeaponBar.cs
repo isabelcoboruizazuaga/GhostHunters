@@ -1,12 +1,20 @@
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerWeaponBar : MonoBehaviour
 {
-    //public List<(GameObject,bool, int)[]> weapons=new List<(GameObject, bool, int)[]>();
+    //Weapons
     public List<object[]> weapons = new List<object[]>(); //{ {gun,purchased, ammunition}, {gun,purchased, ammunition}}
     public GameObject activeWeapon;
     public Dictionary<GameObject, (bool, int)[]> a = new Dictionary<GameObject, (bool, int)[]>();
+    public Image[] weaponImageInBar= new Image[4];
+
+    //Bullets
+    public Image bulletImage;
+    public TextMeshProUGUI bulletTxt;
+    public Sprite[] bulletsSource= new Sprite[4];
 
     // Start is called before the first frame update
     void Start()
@@ -17,6 +25,7 @@ public class PlayerWeaponBar : MonoBehaviour
         //Set active weapon
         var weapon = weapons[0];
         activeWeapon = (GameObject)weapon[0];
+        ShowWeaponBullets(0, weapon);
     }
 
 
@@ -51,14 +60,35 @@ public class PlayerWeaponBar : MonoBehaviour
         bool purchased = (bool)weaponObject[1];
         if (purchased)
         {
+            //Activar el arma
             activeWeapon.SetActive(false);
 
             activeWeapon = (GameObject)weaponObject[0];
 
             activeWeapon.SetActive(true);
+
+            //Mostrar las balas
+            ShowWeaponBullets(position,weaponObject);
         }
     }
 
+    /*
+     *Shows in the ui the selected weapon avaliable bullets
+     */
+    public void ShowWeaponBullets(int position,object[] weaponObject)
+    {
+        bulletImage.GetComponent<Image>().sprite = bulletsSource[position];
+        if (position != 0) { 
+        bulletTxt.text = ((int)weaponObject[2]).ToString(); //WeaponObject-> {weapon, purchased, ammunition}
+        }
+        else
+        {
+            bulletTxt.text = "\u221E";
+        }
+
+    }
+
+    //Set the purchased weapon to bought in the bar
     public void BuyWeapon(int price)
     {
         var weapon = GameObject.Find("OldGun");
@@ -67,18 +97,27 @@ public class PlayerWeaponBar : MonoBehaviour
             case 20:
                 weapon = (GameObject)weapons[1][0];
                 UpdateWeapon(1, (GameObject)weapons[1][0], true, 10);
+                //Set visible
+                EnableWeaponImageInBar(1);
                 break;
             case 50:
                 weapon = GameObject.Find("SemiAutomaticGun");
                 UpdateWeapon(2, (GameObject)weapons[2][0], true, 10);
+                EnableWeaponImageInBar(2);
                 break;
             case 100:
                 weapon = GameObject.Find("SemiAutomaticGun");
                 UpdateWeapon(3, (GameObject)weapons[3][0], true, 50);
+                EnableWeaponImageInBar(3);
                 break;
         }
     }
 
+    //Sets active the image of the given weapon in weapon bar   
+    public void EnableWeaponImageInBar(int position)
+    {
+        weaponImageInBar[position - 1].GetComponent<Image>().enabled = true;
+    }
     private void FillList()
     {
         var weapon = GameObject.Find("OldGun");

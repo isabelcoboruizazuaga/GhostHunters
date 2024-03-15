@@ -37,6 +37,7 @@ public class TerminalUI : MonoBehaviour
         buyBtn = GameObject.Find("BuyButton").GetComponent<Button>();
     }
 
+    //Fills the selected weapon in the buy section
     public void SetBuy(Image image, int price)
     {
         buyImage.GetComponent<Image>().sprite = image.sprite;
