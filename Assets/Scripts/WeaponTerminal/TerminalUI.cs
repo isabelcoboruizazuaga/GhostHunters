@@ -38,11 +38,11 @@ public class TerminalUI : MonoBehaviour
     }
 
     //Fills the selected weapon in the buy section
-    public void SetBuy(Image image, int price)
+    public void SetBuy(Weapon weapon)
     {
-        buyImage.GetComponent<Image>().sprite = image.sprite;
-        buyTxt.text = price.ToString();
-        remainTxt.text = (playerController.money - price).ToString();
+        buyImage.GetComponent<Image>().sprite = weapon.weaponSprite;
+        buyTxt.text = weapon.price.ToString();
+        remainTxt.text = (playerController.money - weapon.price).ToString();
     }
 
    public void Clear()

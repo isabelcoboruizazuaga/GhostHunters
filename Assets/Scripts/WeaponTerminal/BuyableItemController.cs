@@ -33,30 +33,34 @@ public class BuyableItemController : MonoBehaviour
         priceTxt.text = price.ToString();
         image = this.GetComponent<Image>();
 
+        InitializeObject();
+    }
 
-        gameManager=GameObject.Find("GameManager").GetComponent<GameManager>();
+    public void InitializeObject()
+    {
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
 
         //Sets this weapon object using the Sprite as an id
         try
         {
-            this.weapon= gameManager.weaponList.FindWeaponBySprite(image.sprite);
-        }catch(Exception e) {
+            this.weapon = gameManager.weaponList.FindWeaponBySprite(image.sprite);
+        }
+        catch (Exception e)
+        {
             Debug.LogError(e);
 
         }
-
     }
-
     public void ObjectClicked()
     {
         //Clean other listeners
         buyBtn.onClick.RemoveListener(Buy);
 
         //Set the object to buy in the buying interface
-        terminalUI.SetBuy(image,price);
+        terminalUI.SetBuy(this.weapon);
 
         //Ensure the player has money
-        if (playerController.money >= price)
+        if (playerController.money >= this.weapon.price)
         {
             //Set active the buy button
             buyBtn.enabled = true;
@@ -67,11 +71,11 @@ public class BuyableItemController : MonoBehaviour
     public void Buy()
     {
         //Substract player money
-        playerController.money -= price;
+        playerController.money -= this.weapon.price;
         playerController.addCoins(0);
 
         //Make weapon active in weapon bar
-        playerWeaponBar.BuyWeapon(price);
+        playerWeaponBar.BuyWeapon(this.weapon);
 
         //Clean buy section
         terminalUI.Clear();

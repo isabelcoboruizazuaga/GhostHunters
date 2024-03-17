@@ -17,6 +17,7 @@ public class GunController : MonoBehaviour
     public TextMeshProUGUI textGrenades;
 
     public bool automatic = false;
+    private GameManager gameManager;
 
     //Bullet control
     private PlayerWeaponBar playerWeaponBar;
@@ -30,8 +31,10 @@ public class GunController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        playerWeaponBar= GameObject.Find("Player").GetComponent<PlayerWeaponBar>();
-        activeWeaponObject = playerWeaponBar.activeWeaponObjectComplete;
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+
+        playerWeaponBar = GameObject.Find("Player").GetComponent<PlayerWeaponBar>();
+       // activeWeaponObject = playerWeaponBar.activeWeaponObjectComplete;
     }
 
     // Update is called once per frame
@@ -45,15 +48,18 @@ public class GunController : MonoBehaviour
         {
             if (Input.GetButtonDown("Fire1"))
             {
-                activeWeaponObject= playerWeaponBar.activeWeaponObjectComplete;
-                int bullets = (int)activeWeaponObject[2];
+                int bullets = playerWeaponBar.activeWeapon.ammunition;
 
                 if (Time.time > shotRateTime && (bullets>0 || bullets==-1))
                 {
                     //Update bullets in canvas and WeaponBar
                     if (bullets != -1) //Si no tiene balas infinitas
                     {
-                        activeWeaponObject[2] = bullets--;
+                        //update weapon in list 
+                        bullets--;
+                        playerWeaponBar.activeWeapon.ammunition = bullets;
+                        gameManager.weaponList.UpdateWeapon(playerWeaponBar.activeWeapon);
+
                         playerWeaponBar.UpdateBullets(bullets.ToString(),activeWeaponObject);
                     }
                     else
@@ -83,13 +89,15 @@ public class GunController : MonoBehaviour
         {
             if (Input.GetButton("Fire1"))
             {
-                activeWeaponObject = playerWeaponBar.activeWeaponObjectComplete;
-                int bullets = (int)activeWeaponObject[2];
+                int bullets = playerWeaponBar.activeWeapon.ammunition;
 
                 if (Time.time > shotRateTime && bullets > 0 )
                 {
                     //Update bullets in canvas and WeaponBar 
-                    activeWeaponObject[2] = bullets--;
+                    bullets--;
+                    playerWeaponBar.activeWeapon.ammunition = bullets;
+                    gameManager.weaponList.UpdateWeapon(playerWeaponBar.activeWeapon);
+
                     playerWeaponBar.UpdateBullets(bullets.ToString(), activeWeaponObject);
 
                     GameObject newBullet = Instantiate(bullet, spawnPoint.position, spawnPoint.rotation);

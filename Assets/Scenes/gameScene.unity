@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44402242, g: 0.49316543, b: 0.5722324, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1894,7 +1894,7 @@ GameObject:
   - component: {fileID: 148406613}
   m_Layer: 5
   m_Name: ImprovedGun
-  m_TagString: Untagged
+  m_TagString: BuyableItem
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3503,7 +3503,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.00061035156, y: -41.874985}
+  m_AnchoredPosition: {x: -0.00061035156, y: -41.875}
   m_SizeDelta: {x: 0, y: -83.54999}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &269828714
@@ -8657,7 +8657,7 @@ GameObject:
   - component: {fileID: 641223550}
   m_Layer: 5
   m_Name: Bullet1
-  m_TagString: Untagged
+  m_TagString: BuyableItem
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9122,7 +9122,7 @@ GameObject:
   - component: {fileID: 668260660}
   m_Layer: 5
   m_Name: HealthItem
-  m_TagString: Untagged
+  m_TagString: BuyableItem
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12889,7 +12889,7 @@ GameObject:
   - component: {fileID: 975522999}
   m_Layer: 5
   m_Name: Bullet2
-  m_TagString: Untagged
+  m_TagString: BuyableItem
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -15581,12 +15581,12 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   isGrounded: 0
-  jumpHeight: 100
+  jumpHeight: 200
   isSprinting: 0
   sprintingSpeedMultiplier: 2
   sprintSpeed: 1
   staminaAmount: 5
-  money: 0
+  money: 200
   coinText: {fileID: 387649450}
 --- !u!143 &1194311235
 CharacterController:
@@ -15690,7 +15690,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb9d443df6f0eb341874edfa9d8faa15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  activeWeapon: {fileID: 0}
   weaponImageInBar:
   - {fileID: 2134329440}
   - {fileID: 900864049}
@@ -15718,7 +15717,7 @@ GameObject:
   - component: {fileID: 1194559589}
   m_Layer: 5
   m_Name: Bullet3
-  m_TagString: Untagged
+  m_TagString: BuyableItem
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -24651,7 +24650,7 @@ GameObject:
   - component: {fileID: 1818190908}
   m_Layer: 5
   m_Name: CannonGun
-  m_TagString: Untagged
+  m_TagString: BuyableItem
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -27965,7 +27964,7 @@ GameObject:
   - component: {fileID: 2089811928}
   m_Layer: 5
   m_Name: SemiAutomatic
-  m_TagString: Untagged
+  m_TagString: BuyableItem
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -8,6 +8,7 @@ TagManager:
   - Building
   - Weapon
   - PlayerBullet
+  - BuyableItem
   layers:
   - Default
   - TransparentFX

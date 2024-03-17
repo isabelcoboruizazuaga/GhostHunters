@@ -11,13 +11,14 @@ public class Weapon
     public int price;
     public Sprite weaponSprite;
 
-    public Weapon(GameObject gun, bool isPurchased, int ammunition, int price, Sprite weaponSprite)
+    public Weapon(GameObject gun, bool isPurchased, int ammunition, int price, Sprite weaponSprite,string name)
     {
         this.gun = gun;
         this.isPurchased = isPurchased;
         this.ammunition = ammunition;
         this.price = price;
         this.weaponSprite = weaponSprite;
+        this.name = name;
     }
 
     
