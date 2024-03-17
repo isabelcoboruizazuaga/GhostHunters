@@ -10,7 +10,6 @@ public class BuyableItemController : MonoBehaviour
 
     //Component members
     private Image image;
-    public int price = 200;
     public int quantity = 1;
     public TextMeshProUGUI priceTxt;
 
@@ -30,7 +29,6 @@ public class BuyableItemController : MonoBehaviour
 
         //Setting of this component members
         priceTxt = GetComponentInChildren<TextMeshProUGUI>();
-        priceTxt.text = price.ToString();
         image = this.GetComponent<Image>();
 
         InitializeObject();
@@ -44,11 +42,11 @@ public class BuyableItemController : MonoBehaviour
         try
         {
             this.weapon = gameManager.weaponList.FindWeaponBySprite(image.sprite);
+            priceTxt.text = weapon.ToString();
         }
         catch (Exception e)
         {
             Debug.LogError(e);
-
         }
     }
     public void ObjectClicked()

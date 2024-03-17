@@ -21,15 +21,11 @@ public class PlayerWeaponBar : MonoBehaviour
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
 
         //Initialize list of weapons
-        //FillList();
         gameManager.weaponList.SetOneWeaponActive(0);
 
         //Set active weapon
         var weapon = gameManager.weaponList.GetWeaponByIndex(0);
         activeWeapon = weapon;
-        //ShowWeaponBullets(0, weapon);
-
-
     }
 
 
@@ -38,7 +34,6 @@ public class PlayerWeaponBar : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown(KeyCode.Alpha3) || Input.GetKeyDown(KeyCode.Alpha4))
         {
-            //changeWeapon()
             if (Input.GetKeyDown(KeyCode.Alpha1))
             {
                 changeWeapon(0);
@@ -115,35 +110,6 @@ public class PlayerWeaponBar : MonoBehaviour
             }
         }   
     }
-    /*
-    private void FillList()
-    {
-        var weapon = GameObject.Find("OldGun");
-        AssignGun(weapon, true, -1);
-        weapon.SetActive(true);
-
-        weapon = GameObject.Find("Gun");
-        AssignGun(weapon, false, 10);
-        weapon.SetActive(false);
-
-        weapon = GameObject.Find("PowerGun");
-        AssignGun(weapon, false, 10);
-        weapon.SetActive(false);
-
-        weapon = GameObject.Find("SemiAutomaticGun");
-        AssignGun(weapon, false, 10);
-        weapon.SetActive(false);
-    }
-
-    /**
-     * Gives a weapon format to be added to the weapons' list
-     */
-    /*
-    private void AssignGun(GameObject weapon, bool purchased, int amunition)
-    {
-        object[] weaponObject = { weapon, purchased, amunition };
-        weapons.Add(weaponObject);
-    }
-    */
+  
 
 }
