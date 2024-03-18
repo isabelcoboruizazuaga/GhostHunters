@@ -9,7 +9,7 @@ public class PlayerWeaponBar : MonoBehaviour
     public Weapon activeWeapon;
     public Image[] weaponImageInBar = new Image[4];
 
-    //Bullets
+    //Bullet
     public Image bulletImage;
     public TextMeshProUGUI bulletTxt;
     public Sprite[] bulletsSource = new Sprite[4];
@@ -21,10 +21,10 @@ public class PlayerWeaponBar : MonoBehaviour
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
 
         //Initialize list of weapons
-        gameManager.weaponList.SetOneWeaponActive(0);
+        //gameManager.weaponList.SetOneWeaponActive(0);
 
-        //Set active weapon
-        var weapon = gameManager.weaponList.GetWeaponByIndex(0);
+        //Set active bullet
+        var weapon = gameManager.weaponList.GetWeapon(0);
         activeWeapon = weapon;
     }
 
@@ -55,7 +55,7 @@ public class PlayerWeaponBar : MonoBehaviour
 
     public void changeWeapon(int index)
     {
-        Weapon weapon = gameManager.weaponList.GetWeaponByIndex(index);
+        Weapon weapon = gameManager.weaponList.GetWeapon(index);
 
         if (weapon.isPurchased)
         {
@@ -72,7 +72,7 @@ public class PlayerWeaponBar : MonoBehaviour
     }
 
     /*
-     *Shows in the ui the selected weapon avaliable bullets
+     *Shows in the ui the selected bullet avaliable bullets
      */
     public void ShowWeaponBullets(int position)
     {
@@ -92,7 +92,7 @@ public class PlayerWeaponBar : MonoBehaviour
         bulletTxt.text = bullets.ToString();
     }
 
-    //Set the purchased weapon to bought in the bar
+    //Set the purchased bullet to bought in the bar
     public void BuyWeapon(Weapon weapon)
     {
         gameManager.weaponList.SetWeaponPurchased(weapon);
@@ -100,7 +100,12 @@ public class PlayerWeaponBar : MonoBehaviour
 
     }
 
-    //Sets active the image of the given weapon in weapon bar   
+    public void BuyBullets(Bullet bullet)
+    {
+        gameManager.weaponList.UpdateWeapon(bullet.gun, bullet.quantity);
+    }
+
+    //Sets active the image of the given bullet in bullet bar   
     public void EnableWeaponImageInBar(Sprite sprite)
     {
         for (int i = 0; i < weaponImageInBar.Length; i++)

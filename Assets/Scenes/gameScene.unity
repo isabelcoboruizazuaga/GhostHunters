@@ -1969,8 +1969,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 267e07c1d22c3cc41b0713de32fa9157, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  price: 20
-  quantity: 1
   priceTxt: {fileID: 0}
 --- !u!114 &148406613
 MonoBehaviour:
@@ -7447,6 +7445,10 @@ MonoBehaviour:
   gun: {fileID: 21300000, guid: 7402ad0b8cdf498409384773884f03b7, type: 3}
   powerGun: {fileID: 21300000, guid: f2490131f307e0f47a7103bcdb2d463a, type: 3}
   semiAutomaticGun: {fileID: 21300000, guid: a76c6ea00d4a4ba4bab62e1d007491cc, type: 3}
+  oldGunBullet: {fileID: 21300000, guid: 9b22714576e9f3542a09b28224f58d3c, type: 3}
+  gunBullet: {fileID: 21300000, guid: 6ca887132357ad347bf44a84393a00b5, type: 3}
+  powerGunBullet: {fileID: 21300000, guid: e23c93181a6ea254ca3d8762a3615c1c, type: 3}
+  semiAutomaticGunBullet: {fileID: 21300000, guid: 76865d68e6b0f2d4fa13a66f0d2662af, type: 3}
 --- !u!4 &552373938
 Transform:
   m_ObjectHideFlags: 0
@@ -8653,8 +8655,8 @@ GameObject:
   - component: {fileID: 641223545}
   - component: {fileID: 641223547}
   - component: {fileID: 641223546}
-  - component: {fileID: 641223549}
   - component: {fileID: 641223550}
+  - component: {fileID: 641223551}
   m_Layer: 5
   m_Name: Bullet1
   m_TagString: BuyableItem
@@ -8720,21 +8722,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 641223544}
   m_CullTransparentMesh: 1
---- !u!114 &641223549
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 641223544}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 267e07c1d22c3cc41b0713de32fa9157, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  price: 2
-  quantity: 10
-  priceTxt: {fileID: 0}
 --- !u!114 &641223550
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8752,7 +8739,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 641223549}
+        - m_Target: {fileID: 641223551}
           m_TargetAssemblyTypeName: BuyableItemController, Assembly-CSharp
           m_MethodName: ObjectClicked
           m_Mode: 1
@@ -8764,6 +8751,19 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+--- !u!114 &641223551
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 641223544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af98b474eb42d7545b172a1207a3b302, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  priceTxt: {fileID: 0}
 --- !u!1001 &645568371
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9119,7 +9119,7 @@ GameObject:
   - component: {fileID: 668260659}
   - component: {fileID: 668260658}
   - component: {fileID: 668260661}
-  - component: {fileID: 668260660}
+  - component: {fileID: 668260662}
   m_Layer: 5
   m_Name: HealthItem
   m_TagString: BuyableItem
@@ -9185,21 +9185,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 668260656}
   m_CullTransparentMesh: 1
---- !u!114 &668260660
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 668260656}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 267e07c1d22c3cc41b0713de32fa9157, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  price: 10
-  quantity: 1
-  priceTxt: {fileID: 0}
 --- !u!114 &668260661
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9217,7 +9202,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 668260660}
+        - m_Target: {fileID: 0}
           m_TargetAssemblyTypeName: BuyableItemController, Assembly-CSharp
           m_MethodName: ObjectClicked
           m_Mode: 1
@@ -9229,6 +9214,19 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+--- !u!114 &668260662
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 668260656}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af98b474eb42d7545b172a1207a3b302, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  priceTxt: {fileID: 0}
 --- !u!1001 &674548832
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12885,8 +12883,8 @@ GameObject:
   - component: {fileID: 975522994}
   - component: {fileID: 975522996}
   - component: {fileID: 975522995}
-  - component: {fileID: 975522998}
   - component: {fileID: 975522999}
+  - component: {fileID: 975523000}
   m_Layer: 5
   m_Name: Bullet2
   m_TagString: BuyableItem
@@ -12952,21 +12950,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 975522993}
   m_CullTransparentMesh: 1
---- !u!114 &975522998
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 975522993}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 267e07c1d22c3cc41b0713de32fa9157, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  price: 3
-  quantity: 10
-  priceTxt: {fileID: 0}
 --- !u!114 &975522999
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12984,7 +12967,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 975522998}
+        - m_Target: {fileID: 975523000}
           m_TargetAssemblyTypeName: BuyableItemController, Assembly-CSharp
           m_MethodName: ObjectClicked
           m_Mode: 1
@@ -12996,6 +12979,19 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+--- !u!114 &975523000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 975522993}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af98b474eb42d7545b172a1207a3b302, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  priceTxt: {fileID: 0}
 --- !u!1001 &981254141
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15713,8 +15709,8 @@ GameObject:
   - component: {fileID: 1194559586}
   - component: {fileID: 1194559588}
   - component: {fileID: 1194559587}
-  - component: {fileID: 1194559590}
   - component: {fileID: 1194559589}
+  - component: {fileID: 1194559590}
   m_Layer: 5
   m_Name: Bullet3
   m_TagString: BuyableItem
@@ -15818,11 +15814,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1194559585}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 267e07c1d22c3cc41b0713de32fa9157, type: 3}
+  m_Script: {fileID: 11500000, guid: af98b474eb42d7545b172a1207a3b302, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  price: 5
-  quantity: 50
   priceTxt: {fileID: 0}
 --- !u!1 &1197475108
 GameObject:
@@ -24725,8 +24719,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 267e07c1d22c3cc41b0713de32fa9157, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  price: 50
-  quantity: 1
   priceTxt: {fileID: 0}
 --- !u!114 &1818190908
 MonoBehaviour:
@@ -28039,8 +28031,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 267e07c1d22c3cc41b0713de32fa9157, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  price: 100
-  quantity: 1
   priceTxt: {fileID: 0}
 --- !u!114 &2089811928
 MonoBehaviour:

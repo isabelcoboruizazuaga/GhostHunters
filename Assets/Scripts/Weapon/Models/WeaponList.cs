@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class WeaponList
@@ -40,7 +41,7 @@ public class WeaponList
         for (int i = 0; i < weapons.Count; i++)
         {
             var wpn = weapons[i];
-            //Finds whe weapon to change
+            //Finds whe bullet to change
             if (wpn.name.Equals(weapon.name))
             {
                 weapon.isPurchased = true;
@@ -49,12 +50,25 @@ public class WeaponList
             }
         }
     }
+
+    public void UpdateWeapon(GameObject gun, int ammunition)
+    {
+        for(int i = 0;i < weapons.Count;i++) { 
+        var wpn = weapons[i];
+
+            //Finds the gun
+            if (wpn.gun == gun) {
+                wpn.ammunition += ammunition;
+                weapons[i] = wpn;
+            }
+        }
+    }
     public void UpdateWeapon(Weapon weapon)
     {
         for (int i = 0; i < weapons.Count; i++)
         {
             var wpn = weapons[i];
-            //Finds whe weapon to change
+            //Finds whe bullet to change
             if (wpn.name.Equals(weapon.name))
             {
                 //Updates it in the list
@@ -62,24 +76,39 @@ public class WeaponList
             }
         }
     }
-    public Weapon GetWeaponByIndex(int index)
+    public Weapon GetWeapon(int index)
     {
         return weapons[index];
     }
 
-    public void SetOneWeaponActive(int index)
+
+    public Weapon GetWeapon(GameObject gun)
     {
         for (int i = 0; i < weapons.Count; i++)
         {
-            if (i != index)
+            var wpn = weapons[i];
+
+            if (wpn.gun==gun)
             {
-                weapons[i].gun.SetActive(false);
-            }
-            else
-            {
-                weapons[i].gun.SetActive(true);
+                return wpn;
             }
         }
+        return null;
     }
+
+    /* public void SetOneWeaponActive(int index)
+     {
+         for (int i = 0; i < weapons.Count; i++)
+         {
+             if (i != index)
+             {
+                 weapons[i].gun.SetActive(false);
+             }
+             else
+             {
+                 weapons[i].gun.SetActive(true);
+             }
+         }
+     }*/
 
 }

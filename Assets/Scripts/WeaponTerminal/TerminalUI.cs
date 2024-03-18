@@ -45,7 +45,15 @@ public class TerminalUI : MonoBehaviour
         remainTxt.text = (playerController.money - weapon.price).ToString();
     }
 
-   public void Clear()
+    //Fills the selected bullet in the buy section
+    public void SetBuy(Bullet bullet)
+    {
+        buyImage.GetComponent<Image>().sprite = bullet.bulletSprite;
+        buyTxt.text = bullet.price.ToString();
+        remainTxt.text = (playerController.money - bullet.price).ToString();
+    }
+
+    public void Clear()
     {
         //Set everything
         buyImage.GetComponent<Image>().sprite = blankImage;

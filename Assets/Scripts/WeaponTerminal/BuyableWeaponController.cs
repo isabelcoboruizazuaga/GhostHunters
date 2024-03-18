@@ -2,7 +2,8 @@ using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-public class BuyableItemController : MonoBehaviour
+
+public class BuyableWeaponController : MonoBehaviour
 {
     private TerminalUI terminalUI;
     private Button buyBtn;
@@ -16,6 +17,7 @@ public class BuyableItemController : MonoBehaviour
     private PlayerWeaponBar playerWeaponBar;
 
     private GameManager gameManager;
+    public Weapon weapon;
     public Bullet bullet;
     // Start is called before the first frame update
     void Start()
@@ -39,8 +41,8 @@ public class BuyableItemController : MonoBehaviour
         //Sets this bullet object using the Sprite as an id
         try
         {
-            this.bullet = gameManager.bulletList.FindBulletBySprite(image.sprite);
-            priceTxt.text = bullet.price.ToString();
+            this.weapon = gameManager.weaponList.FindWeaponBySprite(image.sprite);
+            priceTxt.text = weapon.price.ToString();
         }
         catch (Exception e)
         {
@@ -53,10 +55,10 @@ public class BuyableItemController : MonoBehaviour
         buyBtn.onClick.RemoveListener(Buy);
 
         //Set the object to buy in the buying interface
-        terminalUI.SetBuy(this.bullet);
+        terminalUI.SetBuy(this.weapon);
 
-        //Ensure the player has money and the necessary gun is purchased
-        if (playerController.money >= this.bullet.price && (gameManager.weaponList.GetWeapon(bullet.gun).isPurchased))
+        //Ensure the player has money and the bullet is not alreade purchased
+        if (playerController.money >= this.weapon.price && !this.weapon.isPurchased)
         {
             //Set active the buy button
             buyBtn.enabled = true;
@@ -67,17 +69,15 @@ public class BuyableItemController : MonoBehaviour
     public void Buy()
     {
         //Substract player money
-        playerController.money -= this.bullet.price;
+        playerController.money -= this.weapon.price;
         playerController.addCoins(0);
 
-        //Update the weapon ammunition
-        playerWeaponBar.BuyBullets(this.bullet);
-
         //Make bullet active in bullet bar
-        //playerWeaponBar.BuyWeapon(this.bullet);
+        playerWeaponBar.BuyWeapon(this.weapon);
 
         //Clean buy section
         terminalUI.Clear();
         buyBtn.onClick.RemoveListener(Buy);
     }
+
 }

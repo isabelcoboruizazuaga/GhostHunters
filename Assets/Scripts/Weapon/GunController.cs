@@ -55,7 +55,7 @@ public class GunController : MonoBehaviour
                     //Update bullets in canvas and WeaponBar
                     if (bullets != -1) //Si no tiene balas infinitas
                     {
-                        //update weapon in list 
+                        //update bullet in list 
                         bullets--;
                         playerWeaponBar.activeWeapon.ammunition = bullets;
                         gameManager.weaponList.UpdateWeapon(playerWeaponBar.activeWeapon);
