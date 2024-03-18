@@ -3,9 +3,8 @@ using UnityEngine;
 
 public class WeaponList
 {
-    public List<object[]> weapons_ = new List<object[]>(); //{ {gun,purchased, ammunition}, {gun,purchased, ammunition}}
-    // Start is called before the first frame update
     public List<Weapon> weapons;
+
     public WeaponList()
     {
         this.weapons = new List<Weapon>();
@@ -82,31 +81,5 @@ public class WeaponList
             }
         }
     }
-
-    /*
-    * Updates a weapon based on the given index
-    */
-    /* public void UpdateWeapon(int position, GameObject weapon, bool purchased, int amunition)
-     {
-         object[] weaponObject = { weapon, purchased, amunition };
-         weapons[position] = weaponObject;
-     }*/
-
-    /*
-     *Updates a weapon in the list based on the weapon Game Object of the given object
-     */
-    /*public void UpdateWeapon(object[] weaponComplete)
-    {
-        for (int i = 0; i < weapons.Count; i++)
-        {
-            var item = weapons[i];
-            //Encuentra el objeto basándose en el arma
-            if (item[0] == weaponComplete[0])
-            {
-                //Lo sustituye por el objeto pasado
-                weapons[i] = weaponComplete;
-            }
-        }
-    }*/
 
 }

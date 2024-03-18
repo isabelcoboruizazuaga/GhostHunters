@@ -7,22 +7,16 @@ public class GameManager : MonoBehaviour
 {
     public Sprite oldGun, gun, powerGun, semiAutomaticGun;
     public WeaponList weaponList = new WeaponList();
-    // Start is called before the first frame update
+
     void Awake()
     {
         weaponList = new WeaponList();
         CreateWeapons();
-        //InitTerminal();
     }
 
-    private void InitTerminal()
+    private void Start()
     {
-       var buyableItems=GameObject.FindGameObjectsWithTag("BuyableItem");
-
-        foreach(var item in buyableItems)
-        {
-            item.GetComponent<BuyableItemController>().InitializeObject();
-        }
+        
     }
 
     private void CreateWeapons()
@@ -30,10 +24,6 @@ public class GameManager : MonoBehaviour
         GameObject weaponGo = GameObject.Find("OldGun");
         weaponList.AddWeapon(weaponGo,true,-1,0,oldGun, "OldGun");
         weaponGo.SetActive(true);
-
-       /* weaponGo = GameObject.Find("Gun");
-        weaponList.AddWeapon(weaponGo,false,10,20, gun);
-        weaponGo.SetActive(true);*/
 
         weaponGo = GameObject.Find("Gun");
         weaponList.AddWeapon(weaponGo, false, 10, 20, gun,"Gun");
@@ -49,9 +39,4 @@ public class GameManager : MonoBehaviour
 
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

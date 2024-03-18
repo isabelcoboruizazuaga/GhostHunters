@@ -4,9 +4,9 @@ using UnityEngine;
 public class TerminalController : MonoBehaviour
 {
     private bool playerInRange = false;
-
     public Canvas shopTerminal;
-    // Start is called before the first frame update
+
+
     void Start()
     {
         shopTerminal.GetComponent<Canvas>().enabled = false;        

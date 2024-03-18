@@ -42,7 +42,7 @@ public class BuyableItemController : MonoBehaviour
         try
         {
             this.weapon = gameManager.weaponList.FindWeaponBySprite(image.sprite);
-            priceTxt.text = weapon.ToString();
+            priceTxt.text = weapon.price.ToString();
         }
         catch (Exception e)
         {
@@ -57,8 +57,8 @@ public class BuyableItemController : MonoBehaviour
         //Set the object to buy in the buying interface
         terminalUI.SetBuy(this.weapon);
 
-        //Ensure the player has money
-        if (playerController.money >= this.weapon.price)
+        //Ensure the player has money and the weapon is not alreade purchased
+        if (playerController.money >= this.weapon.price && !this.weapon.isPurchased)
         {
             //Set active the buy button
             buyBtn.enabled = true;
