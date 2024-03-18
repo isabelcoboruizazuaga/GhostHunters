@@ -33,6 +33,7 @@ public class TerminalController : MonoBehaviour
     {
         //Show shopping panel
         shopTerminal.GetComponent<Canvas>().enabled = true;
+        GameObject.Find("PlayerHUD").GetComponent<Canvas>().enabled = false; 
 
         //Activate cursor
         Cursor.lockState = CursorLockMode.None;
@@ -59,6 +60,7 @@ public class TerminalController : MonoBehaviour
     {
         //Hide shopping panel
         shopTerminal.GetComponent<Canvas>().enabled = false;
+        GameObject.Find("PlayerHUD").GetComponent<Canvas>().enabled = true;
 
         //Deactivate cursor
         Cursor.lockState = CursorLockMode.Locked;

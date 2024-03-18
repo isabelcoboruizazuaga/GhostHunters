@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     public Sprite oldGunBullet, gunBullet, powerGunBullet, semiAutomaticGunBullet;
     public WeaponList weaponList = new WeaponList();
     public BulletList bulletList = new BulletList();
+    public int medicalKit = 0;
 
     void Awake()
     {

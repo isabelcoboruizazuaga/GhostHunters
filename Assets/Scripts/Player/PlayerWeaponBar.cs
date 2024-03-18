@@ -15,6 +15,9 @@ public class PlayerWeaponBar : MonoBehaviour
     public Sprite[] bulletsSource = new Sprite[4];
     private GameManager gameManager;
 
+    //Medical kit
+    public TextMeshProUGUI medicalNumberTxt;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,7 +26,7 @@ public class PlayerWeaponBar : MonoBehaviour
         //Initialize list of weapons
         //gameManager.weaponList.SetOneWeaponActive(0);
 
-        //Set active bullet
+        //Set isActive bullet
         var weapon = gameManager.weaponList.GetWeapon(0);
         activeWeapon = weapon;
     }
@@ -105,7 +108,26 @@ public class PlayerWeaponBar : MonoBehaviour
         gameManager.weaponList.UpdateWeapon(bullet.gun, bullet.quantity);
     }
 
-    //Sets active the image of the given bullet in bullet bar   
+    public void BuyMedicalKit()
+    {
+        gameManager.medicalKit++;
+        SetMedicalImage(true);
+    }
+
+    public void ConsumeMedicalKit()
+    {
+        if (--(gameManager.medicalKit) <= 0)
+        {
+            SetMedicalImage(false);
+        }
+        else
+        {
+            SetMedicalImage(true);
+        }
+
+    }
+
+    //Sets  the image of the given bullet in bullet bar   
     public void EnableWeaponImageInBar(Sprite sprite)
     {
         for (int i = 0; i < weaponImageInBar.Length; i++)
@@ -114,6 +136,13 @@ public class PlayerWeaponBar : MonoBehaviour
                 weaponImageInBar[i].GetComponent<Image>().enabled = true;
             }
         }   
+    }
+
+    public void SetMedicalImage(bool isActive)
+    {
+        weaponImageInBar[3].GetComponent<Image>().enabled = isActive;
+        medicalNumberTxt.enabled = isActive;
+        medicalNumberTxt.text = "x"+gameManager.medicalKit.ToString();
     }
   
 

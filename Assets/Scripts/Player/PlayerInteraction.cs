@@ -9,21 +9,27 @@ public class PlayerInteraction : MonoBehaviour
 
     public bool vulnerable = true;
 
+    private GameManager gameManager;
+    private PlayerWeaponBar weaponBar;
+
 
     // Start is called before the first frame update
     void Start()
     {
         life = 100;
         lifeSlider = FindObjectOfType<LifeBar>();
+
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        weaponBar = GameObject.Find("Player").GetComponent<PlayerWeaponBar>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E) && life < 100)
+        if (Input.GetKeyDown(KeyCode.E) && life < 100 && gameManager.medicalKit>0)
         {
-            //PROVISIONAL CODE, TODO: ADD HEALING ITEM AND CHECK IF IT'S IN INVENTORY
             GetHealed(10);
+            weaponBar.ConsumeMedicalKit();
         }
     }
 

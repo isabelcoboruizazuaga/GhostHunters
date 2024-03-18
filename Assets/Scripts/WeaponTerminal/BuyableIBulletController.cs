@@ -2,14 +2,12 @@ using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-
-public class BuyableItemController : MonoBehaviour
+public class BuyableIBulletController : MonoBehaviour
 {
     private TerminalUI terminalUI;
     private Button buyBtn;
 
     //Component members
-    public int price;
     private Image image;
     public TextMeshProUGUI priceTxt;
 
@@ -18,6 +16,7 @@ public class BuyableItemController : MonoBehaviour
     private PlayerWeaponBar playerWeaponBar;
 
     private GameManager gameManager;
+    public Bullet bullet;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,22 +28,35 @@ public class BuyableItemController : MonoBehaviour
         //Setting of this component members
         priceTxt = GetComponentInChildren<TextMeshProUGUI>();
         image = this.GetComponent<Image>();
-        priceTxt.text = price.ToString();
 
-        //Initializa
-        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        InitializeObject();
     }
 
+    public void InitializeObject()
+    {
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+
+        //Sets this bullet object using the Sprite as an id
+        try
+        {
+            this.bullet = gameManager.bulletList.FindBulletBySprite(image.sprite);
+            priceTxt.text = bullet.price.ToString();
+        }
+        catch (Exception e)
+        {
+            Debug.LogError(e);
+        }
+    }
     public void ObjectClicked()
     {
         //Clean other listeners
         buyBtn.onClick.RemoveListener(Buy);
 
         //Set the object to buy in the buying interface
-        terminalUI.SetBuy(image.sprite, price);
+        terminalUI.SetBuy(this.bullet);
 
         //Ensure the player has money and the necessary gun is purchased
-        if (playerController.money >= price)
+        if (playerController.money >= this.bullet.price && (gameManager.weaponList.GetWeapon(bullet.gun).isPurchased))
         {
             //Set active the buy button
             buyBtn.enabled = true;
@@ -55,11 +67,11 @@ public class BuyableItemController : MonoBehaviour
     public void Buy()
     {
         //Substract player money
-        playerController.money -=price;
+        playerController.money -= this.bullet.price;
         playerController.addCoins(0);
 
         //Update the weapon ammunition
-        playerWeaponBar.BuyMedicalKit();
+        playerWeaponBar.BuyBullets(this.bullet);
 
         //Clean buy section
         terminalUI.Clear();

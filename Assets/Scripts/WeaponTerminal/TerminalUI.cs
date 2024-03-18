@@ -53,6 +53,14 @@ public class TerminalUI : MonoBehaviour
         remainTxt.text = (playerController.money - bullet.price).ToString();
     }
 
+    //Fills the selected item in the buy section
+    public void SetBuy(Sprite sprite, int price)
+    {
+        buyImage.GetComponent<Image>().sprite = sprite;
+        buyTxt.text = price.ToString();
+        remainTxt.text = (playerController.money - price).ToString();
+    }
+
     public void Clear()
     {
         //Set everything
