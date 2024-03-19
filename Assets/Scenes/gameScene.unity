@@ -12527,6 +12527,7 @@ GameObject:
   m_Component:
   - component: {fileID: 959862543}
   - component: {fileID: 959862544}
+  - component: {fileID: 959862545}
   m_Layer: 5
   m_Name: StaminaSlider
   m_TagString: Untagged
@@ -12607,6 +12608,21 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &959862545
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 959862542}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a179ddd7022246d44baf93033ca87b5a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  staminaSlider: {fileID: 959862544}
+  maxStamina: 100
+  player: {fileID: 1194311232}
 --- !u!1001 &968424725
 PrefabInstance:
   m_ObjectHideFlags: 0
