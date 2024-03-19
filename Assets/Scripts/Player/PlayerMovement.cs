@@ -26,7 +26,7 @@ public class PlayerMovement : MonoBehaviour
     public float sprintingSpeedMultiplier = 2f;
     public float sprintSpeed = 1;
 
-    //private StaminaBar staminaSlider;
+    private StaminaBar staminaSlider;
     public float staminaAmount = 5;
 
     //Dinero
@@ -36,18 +36,13 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //staminaSlider = FindObjectOfType<StaminaBar>();
+        staminaSlider = FindObjectOfType<StaminaBar>();
         addCoins(0);
     }
 
     // Update is called once per frame
     void Update()
     {
-        /*if (GameManager.instance.muerto)
-        {
-            return;
-        }*/
-
         //Movimiento
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
@@ -71,7 +66,7 @@ public class PlayerMovement : MonoBehaviour
             velocity.y = Mathf.Sqrt(jumpHeight * -2 * gravity * Time.deltaTime);
         }
 
-        //RunCheck();
+        RunCheck();
     }
 
     public void addCoins( int coinsToAdd)
@@ -80,11 +75,14 @@ public class PlayerMovement : MonoBehaviour
         coinText.text = money.ToString()+"$";
     }
 
-   /* private void RunCheck()
+   private void RunCheck()
     {
+        //Si corremos perdemos stamina, al soltar recuperamos
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
-            isSprinting = !isSprinting;
+            staminaSlider.UseStamina(staminaAmount);
+
+            /*isSprinting = !isSprinting;
             if (isSprinting)
             {
                 sprintSpeed = sprintingSpeedMultiplier;
@@ -94,7 +92,11 @@ public class PlayerMovement : MonoBehaviour
             {
                 sprintSpeed = 1;
                 staminaSlider.UseStamina(0);
-            }
+            }*/
         }
-    }*/
+        if (Input.GetKeyUp(KeyCode.LeftShift))
+        {
+            staminaSlider.RecoverStamina();
+        }
+    }
 }
