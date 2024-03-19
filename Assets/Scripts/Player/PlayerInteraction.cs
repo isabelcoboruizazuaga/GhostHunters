@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerInteraction : MonoBehaviour
 {
@@ -26,7 +27,7 @@ public class PlayerInteraction : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E) && life < 100 && gameManager.medicalKit>0)
+        if (Input.GetKeyDown(KeyCode.E) && life < 100 && gameManager.medicalKit > 0)
         {
             GetHealed(10);
             weaponBar.ConsumeMedicalKit();
@@ -35,7 +36,7 @@ public class PlayerInteraction : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Enemy") &&vulnerable)
+        if (other.CompareTag("Enemy") && vulnerable)
         {
             //PROVISIONAL CODE, TODO: QUIT LIFE BASED ON ENEMY
             GetHurt(10);
@@ -49,7 +50,14 @@ public class PlayerInteraction : MonoBehaviour
         life -= lifeLost;
         lifeSlider.SetSliderPosition(life);
 
-        StartCoroutine(VulnerableCorutine());
+        if (life > 0)
+        {
+            StartCoroutine(VulnerableCorutine());
+        }
+        else
+        {
+            SceneManager.LoadScene("MenuScene");
+        }
     }
 
     public void GetHealed(long lifeHealed)
@@ -60,7 +68,8 @@ public class PlayerInteraction : MonoBehaviour
 
     IEnumerator VulnerableCorutine()
     {
-        yield return new WaitForSeconds(2);
+        //TO DO: SHOW PLAYER IS INVULNERABLE
+        yield return new WaitForSeconds(1);
         vulnerable = true;
     }
 }

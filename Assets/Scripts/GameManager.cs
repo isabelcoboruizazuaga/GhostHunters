@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -10,6 +7,12 @@ public class GameManager : MonoBehaviour
     public WeaponList weaponList = new WeaponList();
     public BulletList bulletList = new BulletList();
     public int medicalKit = 0;
+
+    //Variables to store in this game
+    public static int money = 0;
+    public static int axeGhostsKilled = 0;
+    public static int witchGhostsKilled = 0;
+    public static int demonhGhostsKilled = 0;
 
     void Awake()
     {
@@ -21,21 +24,35 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        
+    }
+    public static void setGhostKilled(int type)
+    {
+        switch (type)
+        {
+            case 0:
+                axeGhostsKilled++;
+                break;
+            case 2:
+                witchGhostsKilled++;
+                break;
+            case 1:
+                demonhGhostsKilled++;
+                break;
+        }
     }
 
     private void CreateWeapons()
-    { 
+    {
         GameObject weaponGo = GameObject.Find("OldGun");
-        weaponList.AddWeapon(weaponGo,true,-1,0,oldGun, "OldGun");
+        weaponList.AddWeapon(weaponGo, true, -1, 0, oldGun, "OldGun");
         weaponGo.SetActive(true);
 
         weaponGo = GameObject.Find("Gun");
-        weaponList.AddWeapon(weaponGo, false, 10, 20, gun,"Gun");
+        weaponList.AddWeapon(weaponGo, false, 10, 20, gun, "Gun");
         weaponGo.SetActive(false);
 
         weaponGo = GameObject.Find("PowerGun");
-        weaponList.AddWeapon(weaponGo,false,10,50,powerGun, "PowerGun");
+        weaponList.AddWeapon(weaponGo, false, 10, 50, powerGun, "PowerGun");
         weaponGo.SetActive(false);
 
         weaponGo = GameObject.Find("SemiAutomaticGun");

@@ -29,17 +29,25 @@ public class EnemyController : MonoBehaviour
     internal void Explode()
     {
         player.GetComponent<PlayerMovement>().addCoins(coins);
-        var explotion = Instantiate(efectoExplosion, transform.position, transform.rotation);
+        GameManager.money += coins;
+        var explosion = Instantiate(efectoExplosion, transform.position, transform.rotation);
 
         DestroyElements();
-        Destroy(explotion, 1);
+        Destroy(explosion, 1);
         Destroy(gameObject);
 
         //Create a new ghost
-        GameObject.Find("EnemySpawn").GetComponent<EnemySpawn>().CallSpawn(TypeOfGhost());
+        int typeOfGhost = TypeOfGhost();
+        GameObject.Find("EnemySpawn").GetComponent<EnemySpawn>().CallSpawn(typeOfGhost);
+        GameManager.setGhostKilled(typeOfGhost);
     }
 
 
+    /*Returns a number for each type of ghost:
+     * 0: Axe ghost
+     * 2: Witch ghost
+     * 1: Demon ghost
+        */
     internal virtual int TypeOfGhost()
     {
         return -1;
