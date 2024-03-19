@@ -60,11 +60,11 @@ public class GunController : MonoBehaviour
                         playerWeaponBar.activeWeapon.ammunition = bullets;
                         gameManager.weaponList.UpdateWeapon(playerWeaponBar.activeWeapon);
 
-                        playerWeaponBar.UpdateBullets(bullets.ToString(),activeWeaponObject);
+                        playerWeaponBar.UpdateBullets(bullets.ToString());
                     }
                     else
                     {
-                        playerWeaponBar.UpdateBullets("\u221E", activeWeaponObject);
+                        playerWeaponBar.UpdateBullets("\u221E");
                     }
                     //CambiarCanvas();
 
@@ -98,7 +98,7 @@ public class GunController : MonoBehaviour
                     playerWeaponBar.activeWeapon.ammunition = bullets;
                     gameManager.weaponList.UpdateWeapon(playerWeaponBar.activeWeapon);
 
-                    playerWeaponBar.UpdateBullets(bullets.ToString(), activeWeaponObject);
+                    playerWeaponBar.UpdateBullets(bullets.ToString());
 
                     GameObject newBullet = Instantiate(bullet, spawnPoint.position, spawnPoint.rotation);
 

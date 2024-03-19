@@ -23,9 +23,6 @@ public class PlayerWeaponBar : MonoBehaviour
     {
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
 
-        //Initialize list of weapons
-        //gameManager.weaponList.SetOneWeaponActive(0);
-
         //Set isActive bullet
         var weapon = gameManager.weaponList.GetWeapon(0);
         activeWeapon = weapon;
@@ -90,7 +87,7 @@ public class PlayerWeaponBar : MonoBehaviour
         }
     }
 
-    public void UpdateBullets(string bullets, object[] activeWeaponObject)
+    public void UpdateBullets(string bullets)
     {
         bulletTxt.text = bullets.ToString();
     }
@@ -105,7 +102,13 @@ public class PlayerWeaponBar : MonoBehaviour
 
     public void BuyBullets(Bullet bullet)
     {
-        gameManager.weaponList.UpdateWeapon(bullet.gun, bullet.quantity);
+        int ammunition= gameManager.weaponList.UpdateWeapon(bullet.gun, bullet.quantity);
+
+        //If we're buying for the active weapon we need to update the bullet number
+        if (bullet.gun == activeWeapon.gun)
+        {
+            UpdateBullets(ammunition.ToString());
+        }
     }
 
     public void BuyMedicalKit()

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44402242, g: 0.49316543, b: 0.5722324, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -9227,8 +9227,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d1994f7217595443b3ed23a0607a38f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  terminalUI: {fileID: 0}
+  buyBtn: {fileID: 0}
   price: 10
+  image: {fileID: 0}
   priceTxt: {fileID: 0}
+  playerController: {fileID: 0}
+  playerWeaponBar: {fileID: 0}
+  gameManager: {fileID: 0}
 --- !u!1001 &674548832
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12178,7 +12184,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 1
+  m_text: "\u221E"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -15762,7 +15768,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: ef569912e9fc9fc4b84fbe4a65abd635, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 041c72c6de5a4674eb6cf4a0bc2cca83, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

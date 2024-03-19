@@ -51,7 +51,7 @@ public class WeaponList
         }
     }
 
-    public void UpdateWeapon(GameObject gun, int ammunition)
+    public int UpdateWeapon(GameObject gun, int ammunition)
     {
         for(int i = 0;i < weapons.Count;i++) { 
         var wpn = weapons[i];
@@ -60,8 +60,12 @@ public class WeaponList
             if (wpn.gun == gun) {
                 wpn.ammunition += ammunition;
                 weapons[i] = wpn;
+
+                //returns the new bullets' number
+                return wpn.ammunition;
             }
         }
+        return 0;
     }
     public void UpdateWeapon(Weapon weapon)
     {
@@ -96,19 +100,5 @@ public class WeaponList
         return null;
     }
 
-    /* public void SetOneWeaponActive(int index)
-     {
-         for (int i = 0; i < weapons.Count; i++)
-         {
-             if (i != index)
-             {
-                 weapons[i].gun.SetActive(false);
-             }
-             else
-             {
-                 weapons[i].gun.SetActive(true);
-             }
-         }
-     }*/
 
 }
