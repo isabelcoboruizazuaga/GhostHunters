@@ -9,7 +9,7 @@ public class BuyableItemController : MonoBehaviour
     private Button buyBtn;
 
     //Component members
-    public int price;
+    public int price=10;
     private Image image;
     public TextMeshProUGUI priceTxt;
 
@@ -29,7 +29,7 @@ public class BuyableItemController : MonoBehaviour
         //Setting of this component members
         priceTxt = GetComponentInChildren<TextMeshProUGUI>();
         image = this.GetComponent<Image>();
-        priceTxt.text = price.ToString();
+        priceTxt.text = price.ToString() + "$";
 
         //Initializa
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
@@ -55,7 +55,7 @@ public class BuyableItemController : MonoBehaviour
     public void Buy()
     {
         //Substract player money
-        playerController.money -=price;
+        playerController.money -= price;
         playerController.addCoins(0);
 
         //Update the weapon ammunition

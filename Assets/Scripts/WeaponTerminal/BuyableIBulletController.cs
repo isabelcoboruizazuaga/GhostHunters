@@ -40,7 +40,7 @@ public class BuyableIBulletController : MonoBehaviour
         try
         {
             this.bullet = gameManager.bulletList.FindBulletBySprite(image.sprite);
-            priceTxt.text = bullet.price.ToString();
+            priceTxt.text = bullet.price.ToString() + "$";
         }
         catch (Exception e)
         {

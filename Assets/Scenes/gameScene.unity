@@ -9227,14 +9227,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d1994f7217595443b3ed23a0607a38f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  terminalUI: {fileID: 0}
-  buyBtn: {fileID: 0}
-  price: 10
-  image: {fileID: 0}
+  price: 0
   priceTxt: {fileID: 0}
-  playerController: {fileID: 0}
-  playerWeaponBar: {fileID: 0}
-  gameManager: {fileID: 0}
 --- !u!1001 &674548832
 PrefabInstance:
   m_ObjectHideFlags: 0

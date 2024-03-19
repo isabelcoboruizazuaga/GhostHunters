@@ -41,32 +41,32 @@ public class TerminalUI : MonoBehaviour
     public void SetBuy(Weapon weapon)
     {
         buyImage.GetComponent<Image>().sprite = weapon.weaponSprite;
-        buyTxt.text = weapon.price.ToString();
-        remainTxt.text = (playerController.money - weapon.price).ToString();
+        buyTxt.text = weapon.price.ToString() + "$";
+        remainTxt.text = (playerController.money - weapon.price).ToString() + "$";
     }
 
     //Fills the selected bullet in the buy section
     public void SetBuy(Bullet bullet)
     {
         buyImage.GetComponent<Image>().sprite = bullet.bulletSprite;
-        buyTxt.text = bullet.price.ToString();
-        remainTxt.text = (playerController.money - bullet.price).ToString();
+        buyTxt.text = bullet.price.ToString()+ "$";
+        remainTxt.text = (playerController.money - bullet.price).ToString() + "$";
     }
 
     //Fills the selected item in the buy section
     public void SetBuy(Sprite sprite, int price)
     {
         buyImage.GetComponent<Image>().sprite = sprite;
-        buyTxt.text = price.ToString();
-        remainTxt.text = (playerController.money - price).ToString();
+        buyTxt.text = price.ToString() + "$";
+        remainTxt.text = (playerController.money - price).ToString() + "$";
     }
 
     public void Clear()
     {
         //Set everything
         buyImage.GetComponent<Image>().sprite = blankImage;
-        playerMoneyTxt.text = (playerController.money).ToString();
-        playerBuyTxt.text = (playerController.money).ToString();
+        playerMoneyTxt.text = (playerController.money).ToString() + "$";
+        playerBuyTxt.text = (playerController.money).ToString() + "$";
         buyTxt.text = "0";
         buyBtn.enabled = false;
     }

@@ -42,7 +42,7 @@ public class BuyableWeaponController : MonoBehaviour
         try
         {
             this.weapon = gameManager.weaponList.FindWeaponBySprite(image.sprite);
-            priceTxt.text = weapon.price.ToString();
+            priceTxt.text = weapon.price.ToString() + "$";
         }
         catch (Exception e)
         {
