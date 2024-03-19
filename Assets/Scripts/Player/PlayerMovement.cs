@@ -77,7 +77,7 @@ public class PlayerMovement : MonoBehaviour
     public void addCoins( int coinsToAdd)
     {
         money += coinsToAdd;
-        coinText.text = money.ToString();
+        coinText.text = money.ToString()+"$";
     }
 
    /* private void RunCheck()
