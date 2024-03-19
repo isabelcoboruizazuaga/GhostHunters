@@ -5367,7 +5367,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 2
+  m_HorizontalAlignment: 1
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -9227,7 +9227,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d1994f7217595443b3ed23a0607a38f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  price: 0
+  price: 10
   priceTxt: {fileID: 0}
 --- !u!1001 &674548832
 PrefabInstance:
@@ -28776,7 +28776,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: a2fbfee9e367a81469fd87a877bb897f, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

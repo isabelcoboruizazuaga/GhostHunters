@@ -52,7 +52,7 @@ public class BuyableWeaponController : MonoBehaviour
     public void ObjectClicked()
     {
         //Clean other listeners
-        buyBtn.onClick.RemoveListener(Buy);
+        buyBtn.onClick.RemoveAllListeners();
 
         //Set the object to buy in the buying interface
         terminalUI.SetBuy(this.weapon);
