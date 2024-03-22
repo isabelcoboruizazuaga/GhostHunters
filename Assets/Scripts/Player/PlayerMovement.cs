@@ -1,15 +1,13 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Events;
 
 public class PlayerMovement : MonoBehaviour
 {
     public CharacterController characterController;
     public float speed;
-    Vector3 move;
-
 
     //Gravedad
     public float gravity = -9.8f;
@@ -24,85 +22,19 @@ public class PlayerMovement : MonoBehaviour
     //Salto
     public float jumpHeight = 300f;
 
-
-
     //Correr
     public bool isSprinting = false;
     public float sprintingSpeedMultiplier = 2f;
     public float sprintSpeed = 1;
 
-
-    //////////////////
-    public float staminaAmount = 1f;
     private StaminaBar staminaSlider;
-
-
-    private float maxStamina;
-    private float regenerateAmount = .5f;
-    private float staminaRegenerateTime = 0.1f;
-    private float losingAmount = 1;
-    private float losingStaminaTime = 0.1f;
-
-    private float _currentSatamina;
-
-
-    //Stamina Max Value getter
-    public float MaxStamina => maxStamina;
-
-
-    public UnityEvent<float> OnHealthChanged;
-    public UnityEvent<float> OnStaminaChanged;
-
-    public float currentStamina
-    {
-        get => currentStamina;
-        private set
-        {
-            currentStamina = currentStamina; //Mathf.Clamp(value, 0, maxStamina); //REVISA ESTOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
-
-            OnStaminaChanged.Invoke(currentStamina);
-        }
-    }
-    //////////////////
-
-    [SerializeField] private float _maxStamaina = 100f;
-    [SerializeField] private float _staminaDrainPerSecond = 2f;
-    [SerializeField] private float _secondsDelayBeforeStaminaRegen = 1f;
-    [SerializeField] private float _staminaRegenPerSecond = 2f;
-    [SerializeField] private float _playerSpeed = 1f;
-    [SerializeField] private float _playerRunSpeed = 2f;
-    [SerializeField] private float _jumpHeight = 1f;
-    [SerializeField] private float _gravityValue = -9.81f;
-
-    // Your runtime values
-    private float _staminaRegenDelayTimer;
-    private float _currentStamina;
-
-    // You only need a single float for this
-    private float _currentYVelocity;
-
-
-    public float MaxSstamina => _maxStamaina;
-
-
-
-
-
-
-
+    private bool canSprint;
+    public float staminaAmount = 5;
 
     //Dinero
     public int money = 0;
     public TextMeshProUGUI coinText;
 
-
-
-    
-   
-    private void Awake()
-    {
-        currentStamina = MaxStamina;
-    }
     // Start is called before the first frame update
     void Start()
     {
@@ -113,14 +45,20 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        UpdateStamina();
-
         //Movimiento
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
-        move = transform.right * x + transform.forward * z;
+        
+        if (x > 0.09 || z > 0.09) {canSprint = true; Debug.Log(x + " , " + z);  }
+        else canSprint = false;
+
+        Vector3 move = transform.right * x + transform.forward * z;
         characterController.Move(move * speed * Time.deltaTime * sprintSpeed);
 
+       
+
+        /*if (Math.Abs(characterController.velocity.x)>=1 || Math.Abs(characterController.velocity.z)>=1) { canSprint = true; Debug.Log(characterController.velocity.x + ", " + characterController.velocity.z); }
+        else canSprint = false;*/
         //Gravedad
         velocity.y += gravity * Time.deltaTime;
         characterController.Move(velocity * Time.deltaTime);
@@ -141,7 +79,6 @@ public class PlayerMovement : MonoBehaviour
         RunCheck();
     }
 
-
     public void addCoins( int coinsToAdd)
     {
         money += coinsToAdd;
@@ -150,79 +87,32 @@ public class PlayerMovement : MonoBehaviour
 
    private void RunCheck()
     {
-        //Si corremos perdemos stamina, al soltar recuperamos
-        if (true) //sprinting) //Input.GetKeyDown(KeyCode.LeftShift)&& (Input.GetAxis("Horizontal") + Input.GetAxis("Vertical") != 0)
+        //Makes sure player is moving to sprint
+        if(canSprint)
         {
-            /*
-    private float regenerateAmount = .5f;
-    private float staminaRegenerateTime = 0.1f;
-    private float losingAmount = 1;
-    private float losingStaminaTime = 0.1f;*/
-
-            //Regenerates stamina calculating the amount per second and multiplying it by time
-            currentStamina -= (losingAmount/losingStaminaTime) *Time.deltaTime;
-
-            //Resets the regeneration timer
-            _staminaRegenDelayTimer = _secondsDelayBeforeStaminaRegen;
-
-
-
-            staminaSlider.UseStamina(staminaAmount);
-
-            /*isSprinting = !isSprinting;
-            if (isSprinting)
+            //Start using stamina when button pressed
+            if (Input.GetKeyDown(KeyCode.LeftShift))
             {
-                sprintSpeed = sprintingSpeedMultiplier;
-                staminaSlider.UseStamina(staminaAmount);
-            }
-            else
-            {
-                sprintSpeed = 1;
-                staminaSlider.UseStamina(0);
-            }*/
-        }
-        else
-        {
-            // only if not pressing run start the regen timer
-            if (_staminaRegenDelayTimer > 0)
-            {
-                _staminaRegenDelayTimer -= Time.deltaTime;
-            }
-            else
-            {
-                // once timer is finished start regen
-                currentStamina += _staminaRegenPerSecond * Time.deltaTime;
+                staminaSlider.UseStamina();
+
+                /*isSprinting = !isSprinting;
+                if (isSprinting)
+                {
+                    sprintSpeed = sprintingSpeedMultiplier;
+                    staminaSlider.UseStamina(staminaAmount);
+                }
+                else
+                {
+                    sprintSpeed = 1;
+                    staminaSlider.UseStamina(0);
+                }*/
             }
         }
-        /*
-        if (Input.GetKeyUp(KeyCode.LeftShift))
+        //Start recovering stamina when key up
+        if (Input.GetKeyUp(KeyCode.LeftShift) )
         {
             staminaSlider.RecoverStamina();
         }
-    }*/
-    }
-    private void UpdateStamina()
-    {
-        if (true)//_inputManager.IsRunning)
-        {
-            // drain your stamina -> also informs all listeners
-            currentStamina -= _staminaDrainPerSecond * Time.deltaTime;
 
-            // reset the regen timer
-            _staminaRegenDelayTimer = _secondsDelayBeforeStaminaRegen;
-        }
-        else
-        {
-            // only if not pressing run start the regen timer
-            if (_staminaRegenDelayTimer > 0)
-            {
-                _staminaRegenDelayTimer -= Time.deltaTime;
-            }
-            else
-            {
-                // once timer is finished start regen
-                currentStamina += _staminaRegenPerSecond * Time.deltaTime;
-            }
-        }
     }
 }

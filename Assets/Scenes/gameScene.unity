@@ -15600,7 +15600,7 @@ MonoBehaviour:
   isSprinting: 0
   sprintingSpeedMultiplier: 2
   sprintSpeed: 1
-  staminaAmount: 5
+  staminaAmount: 1
   money: 200
   coinText: {fileID: 387649450}
 --- !u!143 &1194311235

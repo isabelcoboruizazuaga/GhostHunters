@@ -6,57 +6,28 @@ public class StaminaBar : MonoBehaviour
 {
 
     public Slider staminaSlider;
-    private PlayerMovement playerMovement;
-
-
     private float currentStamina;
-    private float staminaRegenerateTime = 0.1f;
+    const float MAXSTAMINA = 100;
 
+    private float staminaRegenerateTime = 0.2f;
     private float regenerateAmount = .5f;
+
     private float losingAmount = 1;
-
-
-
     private float losingStaminaTime = 0.1f;
+
+
+    public GameObject player;
 
     private Coroutine losingStaminaCoroutine;
     private Coroutine regeneratingCorutine;
 
 
-
-    private void Awake()
-    {
-        // or wherever you get the reference from
-        if (!playerMovement) playerMovement = FindObjectOfType<PlayerMovement>();
-
-        // poll the setting from the player
-        staminaSlider.maxValue = playerMovement.MaxStamina;
-
-        // attach a callback to the event 
-        playerMovement.OnStaminaChanged.AddListener(OnStaminaChanged);
-
-        // just to be sure invoke the callback once immediately with the current value
-        // so we don't have to wait for the first actual event invocation
-        OnStaminaChanged(playerMovement.currentStamina);
-    }
-
-    private void OnDestroy()
-    {
-        if (playerMovement) playerMovement.OnStaminaChanged.RemoveListener(OnStaminaChanged);
-    }
-
-    // This will now be called whenever the stamina has changed
-    private void OnStaminaChanged(float stamina)
-    {
-        staminaSlider.value = stamina;
-    }
-
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        currentStamina = maxStamina;
-        staminaSlider.maxValue = maxStamina;
-        staminaSlider.value = maxStamina;
+        currentStamina = MAXSTAMINA;
+        staminaSlider.maxValue = MAXSTAMINA;
+        staminaSlider.value = MAXSTAMINA;
     }
 
     internal void SetSliderPosition(float amount)
@@ -67,25 +38,29 @@ public class StaminaBar : MonoBehaviour
 
     public void RecoverStamina()
     {
-        //Stops losing stamina
-        if (losingStaminaCoroutine != null){ StopCoroutine(losingStaminaCoroutine); }
+        if (losingStaminaCoroutine != null)
+        {
+            StopCoroutine(losingStaminaCoroutine);
+        }
 
         //Starts regeneating
         regeneratingCorutine = StartCoroutine(RecoveringStaminaCorutine());
     }
     private IEnumerator RecoveringStaminaCorutine()
     {
-        //Wait a couple seconds before starting recovering
+        //Waits a couple seconds before starting recovering
         yield return new WaitForSeconds(1.5f);
 
         //Recovers while it can incrementing slowly
-        while (currentStamina < maxStamina)
+        while (currentStamina < MAXSTAMINA)
         {
             currentStamina += regenerateAmount;
             staminaSlider.value = currentStamina;
             yield return new WaitForSeconds(staminaRegenerateTime);
         }
 
+        //Stops regenerating when stamina its full
+        StopCoroutine(regeneratingCorutine);
         regeneratingCorutine = null;
     }
 
@@ -93,34 +68,25 @@ public class StaminaBar : MonoBehaviour
     /*
      * Method called from player controller on stamina button pressed
      */
-    public void UseStamina(float amount)
+    public void UseStamina()
     {
-        losingAmount = amount;
         //Cancell regeneration while using stamina
-        if (regeneratingCorutine != null) { StopCoroutine(regeneratingCorutine); }
+        if (regeneratingCorutine != null) StopCoroutine(regeneratingCorutine);
 
-
-        //The stamina is spent while it's not 0
         losingStaminaCoroutine = StartCoroutine(LosingStaminaCoroutine());
-
-        //When the stamina is 0 we start regenerating
-        if (currentStamina <= 0)
-        {
-            RecoverStamina();
-        }
     }
 
     private IEnumerator LosingStaminaCoroutine()
     {
         //Loses stamina while it can
-        while ((currentStamina - losingAmount > 0) && (Input.GetAxis("Horizontal")+Input.GetAxis("Vertical")!=0))
+        while ((currentStamina - losingAmount > 0) && (Input.GetAxis("Horizontal") > 0.09 || Input.GetAxis("Vertical") > 0.09))
         {
-            yield return new WaitForSeconds(0.1f);
-
-
+            yield return new WaitForSeconds(losingStaminaTime);
             currentStamina -= losingAmount;
             SetSliderPosition(currentStamina);
         }
+        //When the stamina is 0 we start regenerating
+        RecoverStamina();
     }
 
 
