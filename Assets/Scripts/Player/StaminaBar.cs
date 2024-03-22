@@ -4,6 +4,7 @@ using UnityEngine.UI;
 
 public class StaminaBar : MonoBehaviour
 {
+    public float staminaMultiply=2f;
 
     public Slider staminaSlider;
     private float currentStamina;
@@ -16,7 +17,7 @@ public class StaminaBar : MonoBehaviour
     private float losingStaminaTime = 0.1f;
 
 
-    public GameObject player;
+    public PlayerMovement player;
 
     private Coroutine losingStaminaCoroutine;
     private Coroutine regeneratingCorutine;
@@ -38,10 +39,13 @@ public class StaminaBar : MonoBehaviour
 
     public void RecoverStamina()
     {
+
         if (losingStaminaCoroutine != null)
         {
             StopCoroutine(losingStaminaCoroutine);
         }
+
+        player.sprintingSpeedMultiplier = 1;
 
         //Starts regeneating
         regeneratingCorutine = StartCoroutine(RecoveringStaminaCorutine());
@@ -72,6 +76,9 @@ public class StaminaBar : MonoBehaviour
     {
         //Cancell regeneration while using stamina
         if (regeneratingCorutine != null) StopCoroutine(regeneratingCorutine);
+
+
+        player.sprintingSpeedMultiplier = staminaMultiply;
 
         losingStaminaCoroutine = StartCoroutine(LosingStaminaCoroutine());
     }

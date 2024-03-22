@@ -24,7 +24,7 @@ public class PlayerMovement : MonoBehaviour
 
     //Correr
     public bool isSprinting = false;
-    public float sprintingSpeedMultiplier = 2f;
+    public float sprintingSpeedMultiplier = 1f;
     public float sprintSpeed = 1;
 
     private StaminaBar staminaSlider;
@@ -49,11 +49,11 @@ public class PlayerMovement : MonoBehaviour
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
         
-        if (x > 0.09 || z > 0.09) {canSprint = true; Debug.Log(x + " , " + z);  }
+        if (x > 0.09 || z > 0.09) {canSprint = true; }
         else canSprint = false;
 
         Vector3 move = transform.right * x + transform.forward * z;
-        characterController.Move(move * speed * Time.deltaTime * sprintSpeed);
+        characterController.Move(move * speed * Time.deltaTime * sprintingSpeedMultiplier);
 
        
 
