@@ -13,11 +13,18 @@ public class EnemyController : MonoBehaviour
     protected bool playerSeen = false;
 
     public GameObject efectoExplosion;
+
+    //Music 
+    protected AudioSource myAudioSource;
+
     // Start is called before the first frame update
     protected virtual void Start()
     {
         player = GameObject.Find("Player");
         playerPosition =player.transform;
+
+
+        myAudioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame

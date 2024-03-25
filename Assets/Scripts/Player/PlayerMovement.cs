@@ -38,8 +38,10 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
         staminaSlider = FindObjectOfType<StaminaBar>();
         addCoins(0);
+
     }
 
     // Update is called once per frame
