@@ -1,15 +1,18 @@
 using System;
+using TMPro;
 using UnityEngine;
 
 public class TerminalController : MonoBehaviour
 {
     private bool playerInRange = false;
     public Canvas shopTerminal;
+    public TextMeshPro pressFText;
 
 
     void Start()
     {
-        shopTerminal.GetComponent<Canvas>().enabled = false;        
+        shopTerminal.GetComponent<Canvas>().enabled = false;
+        //pressFText = shopTerminal.GetComponentInChildren<TextMeshPro>();
     }
 
     // Update is called once per frame
@@ -17,6 +20,7 @@ public class TerminalController : MonoBehaviour
     {
         if (playerInRange)
         {
+            pressFText.GetComponentInChildren<TextMeshPro>().enabled = true;
             if (Input.GetKeyDown(KeyCode.F))
             {
                 ShowPanel();
@@ -25,7 +29,10 @@ public class TerminalController : MonoBehaviour
             {
                 HidePanel();
             }
-
+        }
+        else
+        {
+            pressFText.GetComponentInChildren<TextMeshPro>().enabled = false;
         }
     }
 
@@ -88,5 +95,13 @@ public class TerminalController : MonoBehaviour
             playerInRange = true;
         }
     }
-   
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            playerInRange = false;
+        }
+    }
+
 }
