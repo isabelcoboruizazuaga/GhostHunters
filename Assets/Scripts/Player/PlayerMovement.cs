@@ -9,7 +9,7 @@ public class PlayerMovement : MonoBehaviour
     public CharacterController characterController;
     public float speed;
 
-    //Gravedad
+    //Gravity
     public float gravity = -9.8f;
     Vector3 velocity;
 
@@ -19,35 +19,36 @@ public class PlayerMovement : MonoBehaviour
     public LayerMask groundMask;
     public bool isGrounded;
 
-    //Salto
+    //Jump
     public float jumpHeight = 300f;
 
-    //Correr
+    //Sprint
     public bool isSprinting = false;
     public float sprintingSpeedMultiplier = 1f;
     public float sprintSpeed = 1;
 
     private StaminaBar staminaSlider;
-    private bool canSprint;
+    private bool canSprint=false;
     public float staminaAmount = 5;
 
-    //Dinero
+    //Money
     public int money = 0;
     public TextMeshProUGUI coinText;
+
+    //Sound 
+    public AudioSource audioJump;
 
     // Start is called before the first frame update
     void Start()
     {
-
         staminaSlider = FindObjectOfType<StaminaBar>();
         addCoins(0);
-
     }
 
     // Update is called once per frame
     void Update()
     {
-        //Movimiento
+        //Movement
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
         
@@ -57,11 +58,7 @@ public class PlayerMovement : MonoBehaviour
         Vector3 move = transform.right * x + transform.forward * z;
         characterController.Move(move * speed * Time.deltaTime * sprintingSpeedMultiplier);
 
-       
-
-        /*if (Math.Abs(characterController.velocity.x)>=1 || Math.Abs(characterController.velocity.z)>=1) { canSprint = true; Debug.Log(characterController.velocity.x + ", " + characterController.velocity.z); }
-        else canSprint = false;*/
-        //Gravedad
+        //Gravity
         velocity.y += gravity * Time.deltaTime;
         characterController.Move(velocity * Time.deltaTime);
 
@@ -72,9 +69,10 @@ public class PlayerMovement : MonoBehaviour
             velocity.y = -2f;
         }
 
-        //Salto
+        //Jump
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
+            audioJump.Play();
             velocity.y = Mathf.Sqrt(jumpHeight * -2 * gravity * Time.deltaTime);
         }
 
@@ -96,18 +94,6 @@ public class PlayerMovement : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.LeftShift))
             {
                 staminaSlider.UseStamina();
-
-                /*isSprinting = !isSprinting;
-                if (isSprinting)
-                {
-                    sprintSpeed = sprintingSpeedMultiplier;
-                    staminaSlider.UseStamina(staminaAmount);
-                }
-                else
-                {
-                    sprintSpeed = 1;
-                    staminaSlider.UseStamina(0);
-                }*/
             }
         }
         //Start recovering stamina when key up

@@ -38,6 +38,7 @@ public class EnemyController : MonoBehaviour
         player.GetComponent<PlayerMovement>().addCoins(coins);
         GameManager.money += coins;
         var explosion = Instantiate(efectoExplosion, transform.position, transform.rotation);
+        //efectoExplosion.GetComponent<AudioSource>().Play();
 
         DestroyElements();
         Destroy(explosion, 1);

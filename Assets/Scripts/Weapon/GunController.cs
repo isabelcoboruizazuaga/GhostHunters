@@ -3,29 +3,24 @@ using UnityEngine;
 
 public class GunController : MonoBehaviour
 {
-    public Transform spawnPoint; //punto de salida de la bala
+    public Transform spawnPoint; 
     public GameObject bullet;
 
-    public float shotForce = 10000; //velocidad con la que sale la bala
-    public float shotRate = 0.5f; //Tiempo hasta el proximo disparo
+    public float shotForce = 10000; 
+    public float shotRate = 0.5f; 
     private float shotRateTime = 0;
 
     public AudioClip shotSound;
-    private AudioSource shotAudioSource;
-
-    public TextMeshProUGUI textAmmo;
-    public TextMeshProUGUI textGrenades;
+    public AudioSource shotAudioSource;
 
     public bool automatic = false;
     private GameManager gameManager;
 
     //Bullet control
     private PlayerWeaponBar playerWeaponBar;
-    private object[] activeWeaponObject;
 
     private void Awake()
     {
-        shotAudioSource = GetComponent<AudioSource>();
     }
 
     // Start is called before the first frame update
@@ -34,16 +29,11 @@ public class GunController : MonoBehaviour
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
 
         playerWeaponBar = GameObject.Find("Player").GetComponent<PlayerWeaponBar>();
-       // activeWeaponObject = playerWeaponBar.activeWeaponObjectComplete;
     }
 
     // Update is called once per frame
     void Update()
     {
-        /* if (GameManager.instance.muerto)
-         {
-             return;
-         }*/
         if (!automatic)
         {
             if (Input.GetButtonDown("Fire1"))
@@ -53,7 +43,7 @@ public class GunController : MonoBehaviour
                 if (Time.time > shotRateTime && (bullets>0 || bullets==-1))
                 {
                     //Update bullets in canvas and WeaponBar
-                    if (bullets != -1) //Si no tiene balas infinitas
+                    if (bullets != -1) //When bullets are finite
                     {
                         //update bullet in list 
                         bullets--;
@@ -66,15 +56,10 @@ public class GunController : MonoBehaviour
                     {
                         playerWeaponBar.UpdateBullets("\u221E");
                     }
-                    //CambiarCanvas();
-
-                    //Esto creo que no es necesario, comprobar luego
-                    /*GameManager.instance.gunAmmo--;
-                    textAmmo.text =GameManager.instance.gunAmmo.ToString();*/
-
-                    // shotAudioSource.PlayOneShot(shotSound);
 
                     GameObject newBullet = Instantiate(bullet, spawnPoint.position, spawnPoint.rotation);
+
+                    shotAudioSource.PlayOneShot(shotSound);
 
                     newBullet.GetComponent<Rigidbody>().AddForce(transform.forward * shotForce);
                     Destroy(newBullet, 3);
@@ -102,6 +87,8 @@ public class GunController : MonoBehaviour
 
                     GameObject newBullet = Instantiate(bullet, spawnPoint.position, spawnPoint.rotation);
 
+                    shotAudioSource.PlayOneShot(shotSound);
+
                     newBullet.GetComponent<Rigidbody>().AddForce(transform.forward * shotForce);
                     Destroy(newBullet, 3);
 
@@ -110,19 +97,4 @@ public class GunController : MonoBehaviour
             }
         }
     }
-    /*
-    private void CambiarCanvas()
-    {
-        switch (GameManager.instance.tipoDeArma)
-        {
-            case 1:
-                GameManager.instance.gunAmmo--;
-                textAmmo.text = GameManager.instance.gunAmmo.ToString();
-                break;
-            case 2:
-                GameManager.instance.grenades--;
-                textGrenades.text = GameManager.instance.grenades.ToString();
-                break;
-        }
-    }*/
 }

@@ -13,6 +13,8 @@ public class PlayerInteraction : MonoBehaviour
     private GameManager gameManager;
     private PlayerWeaponBar weaponBar;
 
+    public AudioSource hurtSound;
+
 
     // Start is called before the first frame update
     void Start()
@@ -39,7 +41,9 @@ public class PlayerInteraction : MonoBehaviour
         if (other.CompareTag("Enemy") && vulnerable)
         {
             //PROVISIONAL CODE, TODO: QUIT LIFE BASED ON ENEMY
+            hurtSound.Play();
             GetHurt(10);
+
         }
     }
 
