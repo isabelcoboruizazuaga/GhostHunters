@@ -18,16 +18,18 @@ public class TerminalController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (playerInRange)
+        if (playerInRange && !GameManager.isPaused)
         {
             pressFText.GetComponentInChildren<TextMeshPro>().enabled = true;
             if (Input.GetKeyDown(KeyCode.F))
             {
+                GameManager.isBuying = true;
                 ShowPanel();
             }
             if (Input.GetKeyDown(KeyCode.Escape))
             {
                 HidePanel();
+                StartCoroutine(GameManager.StopBuying());
             }
         }
         else
@@ -38,6 +40,7 @@ public class TerminalController : MonoBehaviour
 
     private void ShowPanel()
     {
+
         //Show shopping panel
         shopTerminal.GetComponent<Canvas>().enabled = true;
         GameObject.Find("PlayerHUD").GetComponent<Canvas>().enabled = false; 
@@ -65,6 +68,7 @@ public class TerminalController : MonoBehaviour
 
     private void HidePanel()
     {
+
         //Hide shopping panel
         shopTerminal.GetComponent<Canvas>().enabled = false;
         GameObject.Find("PlayerHUD").GetComponent<Canvas>().enabled = true;
@@ -86,6 +90,7 @@ public class TerminalController : MonoBehaviour
         {
             GameObject.FindWithTag("Weapon").GetComponentInChildren<MeshRenderer>().enabled = true;
         }
+
     }
 
     private void OnTriggerEnter(Collider other)

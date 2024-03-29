@@ -69,14 +69,19 @@ public class PlayerMovement : MonoBehaviour
             velocity.y = -2f;
         }
 
-        //Jump
-        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
+        //Input checks, should be stopped when game paused
+        if (!GameManager.isPaused)
         {
-            audioJump.Play();
-            velocity.y = Mathf.Sqrt(jumpHeight * -2 * gravity * Time.deltaTime);
-        }
+            //Jump
+            if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
+            {
+                audioJump.Play();
+                velocity.y = Mathf.Sqrt(jumpHeight * -2 * gravity * Time.deltaTime);
+            }
 
-        RunCheck();
+            RunCheck();
+        }
+        
     }
 
     public void addCoins( int coinsToAdd)

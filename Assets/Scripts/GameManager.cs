@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -13,6 +14,10 @@ public class GameManager : MonoBehaviour
     public static int axeGhostsKilled = 0;
     public static int witchGhostsKilled = 0;
     public static int demonhGhostsKilled = 0;
+
+    public static bool isPaused=false;
+    public static bool isBuying=false;
+    public static int sensitivity = 100;
 
     void Awake()
     {
@@ -78,4 +83,9 @@ public class GameManager : MonoBehaviour
         bulletList.AddBullet(weaponGo, 100, 5, semiAutomaticGunBullet, "semiAutomaticGunBullet");
     }
 
+    public static IEnumerator StopBuying()
+    {
+        yield return 1f;
+        isBuying = false;
+    }
 }

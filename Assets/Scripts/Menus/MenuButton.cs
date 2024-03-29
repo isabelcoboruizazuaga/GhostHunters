@@ -14,7 +14,6 @@ public class MenuButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     public void OnPointerEnter(PointerEventData eventData)
     {
         btnText.color = hoverColor;
-        Debug.Log("A");
     }
 
     public void OnPointerExit(PointerEventData eventData)

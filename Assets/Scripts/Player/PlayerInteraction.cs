@@ -29,10 +29,16 @@ public class PlayerInteraction : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E) && life < 100 && gameManager.medicalKit > 0)
+        if (Input.GetKeyDown(KeyCode.E) && life < 100 && gameManager.medicalKit > 0 && !GameManager.isPaused)
         {
             GetHealed(10);
             weaponBar.ConsumeMedicalKit();
+        }
+
+
+        if (Input.GetKeyDown(KeyCode.Escape)&& !GameManager.isBuying)
+        {
+            if (!GameManager.isPaused) { PauseGame.Pause(); }else { PauseGame.UnPause(); }
         }
     }
 
