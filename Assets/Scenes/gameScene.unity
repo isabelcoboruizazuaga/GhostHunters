@@ -14430,7 +14430,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70c6eda76eaf34c4b8baea77092f4298, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mouseSensitivity: 300
+  mouseSensitivity: 150
   playerBody: {fileID: 1194311233}
 --- !u!1001 &525911604
 PrefabInstance:
@@ -32836,7 +32836,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   isGrounded: 0
-  jumpHeight: 200
+  jumpHeight: 50
   isSprinting: 0
   sprintingSpeedMultiplier: 1
   sprintSpeed: 1
