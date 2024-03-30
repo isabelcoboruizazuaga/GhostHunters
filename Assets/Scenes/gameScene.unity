@@ -5248,7 +5248,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 100
+  m_text: 5
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
   m_sharedMaterial: {fileID: 2164040, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
@@ -14691,7 +14691,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70c6eda76eaf34c4b8baea77092f4298, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mouseSensitivity: 150
   playerBody: {fileID: 1194311233}
 --- !u!1001 &525911604
 PrefabInstance:
@@ -20443,6 +20442,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 307c8beaf90c520478e2d66353a6ced9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sensitivityText: {fileID: 186121160}
 --- !u!1001 &711944506
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22742,7 +22742,7 @@ GameObject:
   - component: {fileID: 786644895}
   - component: {fileID: 786644894}
   m_Layer: 5
-  m_Name: Button (1)
+  m_Name: BtnMore
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -22811,7 +22811,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 786644895}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 709576152}
+        m_TargetAssemblyTypeName: PauseMenuController, Assembly-CSharp
+        m_MethodName: MoreSensitivity
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &786644895
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23897,6 +23909,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1956851851}
     m_Modifications:
+    - target: {fileID: 350307798715975004, guid: 5b7afadbb918bad4085e4363451fcc56, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 350307798715975004, guid: 5b7afadbb918bad4085e4363451fcc56, type: 3}
+      propertyPath: m_Interactable
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1095602918202317893, guid: 5b7afadbb918bad4085e4363451fcc56, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -23997,7 +24017,8 @@ PrefabInstance:
       propertyPath: m_HorizontalAlignment
       value: 2
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2772461024231586922, guid: 5b7afadbb918bad4085e4363451fcc56, type: 3}
     m_RemovedGameObjects:
     - {fileID: 2780088322190693170, guid: 5b7afadbb918bad4085e4363451fcc56, type: 3}
     m_AddedGameObjects: []
@@ -31981,7 +32002,7 @@ GameObject:
   - component: {fileID: 1133257330}
   - component: {fileID: 1133257329}
   m_Layer: 5
-  m_Name: Button
+  m_Name: BtnLess
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32050,7 +32071,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1133257330}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 709576152}
+        m_TargetAssemblyTypeName: PauseMenuController, Assembly-CSharp
+        m_MethodName: LessSensitivity
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1133257330
 MonoBehaviour:
   m_ObjectHideFlags: 0
