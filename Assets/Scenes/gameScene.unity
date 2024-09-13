@@ -33056,7 +33056,7 @@ MonoBehaviour:
   sprintingSpeedMultiplier: 1
   sprintSpeed: 1
   staminaAmount: 1
-  money: 200
+  money: 0
   coinText: {fileID: 387649450}
   audioJump: {fileID: 1194311241}
 --- !u!143 &1194311235
